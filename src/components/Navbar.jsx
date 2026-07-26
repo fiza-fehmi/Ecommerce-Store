@@ -52,7 +52,7 @@ const Navbar = () => {
           />
         ))}
       </div>
-      <div className="flex items-center rounded-xl justify-center h-10 w-20 sm:w-24 sm:px-0 lg:h-12 lg:w-32 gap-1  lg:gap-2 bg-[#2B2344] shadow-[0_10px_30px_rgba(246,197,209,0.45)] text-white cursor-pointer hover:bg-[#241C3A]
+      <div className="flex items-center rounded-xl justify-center h-10 w-20 sm:w-24 sm:px-0 lg:h-12 lg:w-32 gap-2 lg:gap-2 bg-[#2B2344] shadow-[0_10px_30px_rgba(246,197,209,0.45)] text-white cursor-pointer hover:bg-[#241C3A]
 transition-all
 duration-300">
         <span>
@@ -67,7 +67,8 @@ duration-300">
           </div>
       </div>
      {menuToggle && (
-  <div className="md:hidden flex flex-col justify-start absolute left-0 gap-4 bg-[#2B2344]  mt-58 rounded-br-xl px-5 pt-2 pb-5">
+  <div className="md:hidden flex flex-col transition duration-300 ease-linear delay-700
+   justify-start absolute left-0 gap-4 bg-[#2B2344]  mt-58 rounded-br-xl px-5 pt-2 pb-5">
     {links.map((link) => (
       <NavbarLink
         key={link.id}
