@@ -7,9 +7,8 @@ import {
   Watch,
   Wrench,
   Unplug,
-  Astroid,
-  Star,
-  Tag
+  Gift
+
 } from "lucide-react";
 import { useState } from "react";
 
@@ -51,33 +50,15 @@ const Leftbar = () => {
       id: "electric",
     },
   ];
-  const featureLink =[
-    {
-       icon: <Astroid />,
-      btnName: "Arrivals",
-      id: "arrival",
 
-    },
-    {
-      icon:<Star />,
-      btnName:"Best Sellers",
-      id:"sell"
-
-    },
-    {
-      icon:<Tag />,
-      btnName:"On Sale",
-      id:"sale"
-    }
-  ]
   const [active, setActive] = useState("home")
   return (
     
-    <div className="bg-[#FFFDF9] border-2 border-[#EAEAEA] shadow-sm px-3 rounded-xl py-5">
-      <div>
+    <div className="bg-[#FFFDF9] border-2 border-[#EAEAEA] flex flex-col items-center shadow-sm px-3 rounded-xl py-4">
+      <div className=" flex justify-start w-full">
       <h1 className="ml-2 text-base font-medium text-gray-600">BROWSE</h1>
       </div>
-      <div className="flex-col items-center flex gap-2 mt-1 py-2 border-b border-gray-600/30">
+      <div className="flex-col items-center flex gap-2 mt-1 py-2">
         {Links.map((link)=>(
       <LeftbarBtn
       icon={link.icon}
@@ -88,22 +69,11 @@ const Leftbar = () => {
        />
         ))}
         </div>
-        <div className="mt-3">
-      <h1 className="ml-2 text-base font-medium text-gray-600">FEATURED</h1>
-      <div >
-         {featureLink.map((link)=>(
-      <LeftbarBtn
-      icon={link.icon}
-      key={link.id}
-      btnName={link.btnName}
-      active={active===link.id}
-      onClick={()=>setActive(link.id)}
-       />
-        ))}
-      </div>
-
+        <div className="bg-[#e5e5e5] h-28 w-40">
+  <Gift />
 
         </div>
+      
     </div>
   
   );

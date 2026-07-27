@@ -4,7 +4,7 @@ import Leftbar from "./Leftbar"
 
 const HomePage = () => {
   return (
-    <div className="flex m-4 ">
+    <div className="flex mx-4 my-3 ">
       <div className="flex-2">
  <Leftbar />
       </div>
