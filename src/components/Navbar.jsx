@@ -1,7 +1,14 @@
-import { RiShoppingBagFill} from "@remixicon/react";
-import NavbarLink from "./NavbarLink";
 import { useState } from "react";
-import { ShoppingCart ,Menu ,X  } from "lucide-react";
+import { RiShoppingBagFill } from "@remixicon/react";
+import {
+  ShoppingCart,
+  Search,
+  User,
+  Menu,
+  X,
+} from "lucide-react";
+import NavbarLink from "./NavbarLink";
+
 const links = [
   {
     href: "#shop",
@@ -24,66 +31,155 @@ const links = [
     id: "about",
   },
 ];
+
 const Navbar = () => {
   const [active, setActive] = useState("shop");
-  const [menuToggle, setMenuToggle] = useState(false)
+  const [menuToggle, setMenuToggle] = useState(false);
 
   return (
-    <div className="lg:h-16 h-16  px-3 flex sm:px-8 justify-between items-center w-full bg-gradient-to-r from-[#1F2038] via-[#2B2344] to-[#3B294A]">
-        <div className="sm:hidden">
-             <button className="sm:hidden text-[#F6C5D1]" onClick={()=>setMenuToggle(!menuToggle)}>
-        {menuToggle ?  (  <X />): (<Menu/>)}
-        </button>
-        </div>
-      <div className="flex items-center">
-        <RiShoppingBagFill className="text-[#F6C5D1] w-8 h-8  lg:h-10 lg:w-16" />
-        <h1 className="text-lg font-medium lg:text-2xl lg:font-bold text-white">
-          Shop<span className="text-[#F6C5D1]">Sphere</span>
-        </h1>
-      </div>
-      <div className="md:flex items-center gap-4 text-white lg:gap-8 hidden"> 
-        {links.map((link) => (
-          <NavbarLink
-            href={link.href}
-            linkName={link.linkName}
-            key={link.id}
-            active={active === link.id}
-            onClick={() => setActive(link.id)}
+    <nav className="sticky top-0 z-50 bg-[#FFFDF9] border-b border-[#EAEAEA] shadow-sm">
+
+      <div className="max-w-[1440px] mx-auto h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6">
+
+        {/* Logo */}
+        <div className="flex items-center sm:gap-3">
+
+          <RiShoppingBagFill
+            className="text-[#6D4AFF] h-8 w-8 sm:h-10 sm:w-10"
           />
-        ))}
-      </div>
-      <div className="flex items-center rounded-xl justify-center h-10 w-20 sm:w-24 sm:px-0 lg:h-12 lg:w-32 gap-2 lg:gap-2 bg-[#2B2344] shadow-[0_10px_30px_rgba(246,197,209,0.45)] text-white cursor-pointer hover:bg-[#241C3A]
-transition-all
-duration-300">
-        <span>
-          <ShoppingCart className="text-[#F6C5D1] h-5 w-5 sm:h-6 sm:w-6" />
-        </span>
-        <button className="text-base sm:flex items-center gap-1 cursor-pointer hidden">
-        Cart
-          
-        </button>
-          <div className="h-5 w-5 bg-red-300  flex justify-center items-center rounded-full">
-            0
+
+          <h1 className="text-xl sm:text-3xl font-bold">
+            Shop<span className="text-[#6D4AFF]">Sphere</span>
+          </h1>
+
+        </div>
+
+        {/* Desktop Links */}
+        <div className="hidden lg:flex items-center gap-8">
+
+          {links.map((link) => (
+            <NavbarLink
+              key={link.id}
+              href={link.href}
+              linkName={link.linkName}
+              active={active === link.id}
+              onClick={() => setActive(link.id)}
+            />
+          ))}
+
+        </div>
+
+        {/* Right Side */}
+        <div className="hidden lg:flex items-center gap-5">
+
+          {/* Search */}
+
+          <div className="flex items-center w-[360px] h-12 rounded-xl border border-gray-200 bg-white px-4">
+
+            <Search size={20} className="text-gray-400" />
+
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="ml-3 w-full bg-transparent outline-none"
+            />
+
           </div>
+
+          <User
+            className="cursor-pointer text-gray-700 hover:text-[#6D4AFF]"
+            size={23}
+          />
+
+          {/* Cart */}
+
+          <button className="flex items-center gap-2 bg-[#6D4AFF] hover:bg-[#5A38EA] transition text-white rounded-xl px-4 py-3 cursor-pointer">
+
+            <ShoppingCart className="h-6" />
+
+            <span className="font-medium">
+              Cart
+            </span>
+
+            <div className="h-6 w-6 rounded-full bg-white text-[#6D4AFF] flex items-center justify-center text-sm font-semibold">
+              0
+            </div>
+
+          </button>
+
+        </div>
+
+        {/* Mobile Right */}
+
+        <div className="flex lg:hidden items-center gap-4">
+
+          <button className="relative bg-[#6D4AFF] text-white p-2 rounded-xl">
+
+            <ShoppingCart className="h-5 w-5" />
+
+            <div className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex justify-center items-center">
+              0
+            </div>
+
+          </button>
+
+          <button
+            onClick={() => setMenuToggle(!menuToggle)}
+          >
+            {menuToggle ? <X size={30} /> : <Menu size={30} />}
+          </button>
+
+        </div>
+
       </div>
-     {menuToggle && (
-  <div className="md:hidden flex flex-col transition duration-300 ease-linear delay-700
-   justify-start absolute left-0 gap-4 bg-[#2B2344]  mt-58 rounded-br-xl px-5 pt-2 pb-5">
-    {links.map((link) => (
-      <NavbarLink
-        key={link.id}
-        href={link.href}
-        linkName={link.linkName}
-        active={active === link.id}
-        onClick={() => {
-          setActive(link.id);
-          setMenuToggle(false);
-        }}
-      />
-    ))}
-  </div>
-)}
-    </div>
+
+      {/* Mobile Menu */}
+
+      {menuToggle && (
+
+        <div className="lg:hidden border-t bg-white px-6 py-5 space-y-2 shadow-md">
+
+          <div className="flex items-center border rounded-xl px-4 h-8 ">
+
+            <Search size={20} className="text-gray-400" />
+
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="ml-3 w-full outline-none"
+            />
+
+          </div>
+
+          <div className="flex gap-3 justify-between">
+
+            {links.map((link) => (
+              <NavbarLink
+                key={link.id}
+                href={link.href}
+                linkName={link.linkName}
+                active={active === link.id}
+                onClick={() => {
+                  setActive(link.id);
+                  setMenuToggle(false);
+                }}
+              />
+            ))}
+
+          </div>
+
+          <div className="lg:flex gap-6 hidden">
+
+
+            <User className="cursor-pointer" />
+
+          </div>
+
+        </div>
+
+      )}
+
+    </nav>
   );
 };
 
