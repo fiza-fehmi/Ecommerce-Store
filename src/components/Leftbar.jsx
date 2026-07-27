@@ -58,7 +58,7 @@ const Leftbar = () => {
       <div className=" flex justify-start w-full">
       <h1 className="ml-2 text-base font-medium text-gray-600">BROWSE</h1>
       </div>
-      <div className="flex-col items-center flex gap-2 mt-1 py-2">
+      <div className="flex-col items-center flex gap-2 mt-1 pt-2 pb-3">
         {Links.map((link)=>(
       <LeftbarBtn
       icon={link.icon}
@@ -69,9 +69,15 @@ const Leftbar = () => {
        />
         ))}
         </div>
-        <div className="bg-[#e5e5e5] h-28 w-40">
-  <Gift />
+        <div className="bg-[#EAE4F7] h-40 rounded-lg justify-center gap-1 w-44 px-3 flex flex-col items-center">
+          <div className="h-14 w-14 rounded-full bg-[#FFFDF9] flex justify-center items-center">
+        <Gift className="text-[#5A3FF2] h-9 w-9"  />
+          </div>
+          <p className="text-center text-base font-medium text-gray-700">Get <span className="text-lg text-[#5A3FF2]">10%</span> off on your first order</p>
+          <div className=" flex justify-center items-center">
+          {/* <button className="h-9 w-28 transition delay-100 duration-200 bg-[#5A3FF2]  hover:border-2 rounded-lg hover:border-[#5A3FF2] hover:bg-transparent border-2 border-transparent  font-medium text-base text-white hover:text-gray-700 cursor-pointer">Shop Now</button> */}
 
+          </div>
         </div>
       
     </div>
