@@ -1,5 +1,4 @@
 import CardBar from "./CardBar"
-import CartBar from "./CartBar"
 import Leftbar from "./Leftbar"
 
 const HomePage = () => {
@@ -8,12 +7,10 @@ const HomePage = () => {
       <div className="flex-2">
  <Leftbar />
       </div>
-      <div className="flex-7">
+      <div className="flex-10">
         <CardBar />
       </div>
-      <div className="flex-3">
-        <CartBar />
-      </div>
+
       
     </div>
   )
