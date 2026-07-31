@@ -251,9 +251,9 @@ const Links = [
   return (
     <div>
        <div className="flex">
-        <h1 className="uppercase text-gray-600 font-medium">All Products</h1>
+        <h1 className="uppercase text-black font-medium text-xl py-3">All Products</h1>
       </div>
-      <div className="grid grid-cols-4 gap-3">
+      <div className="flex flex-wrap">
       {Links.map((link)=>(
       <Card
       key={link.id}
