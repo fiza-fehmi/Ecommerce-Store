@@ -5,18 +5,25 @@ const Card = ({
   productName,
   price,
 }) => {
+  const imageSize =()=>{
+    return "h-44 w-full object-contain"
+
+  }
   return (
-    <div className="w-[220px] border border-transparent hover:border hover:border-gray-600/20 rounded-lg cursor-pointer transition-all duration-300 ease-in group p-2 bg-[#FFFDF9] shadow-[0_4px_18px_rgba(31,32,56,0.10)]">
+ 
+     
+    <div className="w-[220px] border border-gray-600/20 rounded-lg cursor-pointer transition-all duration-300 overflow-hidden ease-in group p-2 bg-[#FFFDF9] shadow-[0_4px_18px_rgba(31,32,56,0.10)]">
       <div className="relative h-48 items-center rounded-lg justify-center w-full overflow-hidden flex  bg-[#F2EBFB]">
-        <img className="h-full w-full transition-all duration-200 ease-in group-hover:scale-110 rounded-lg relative object-contain" src={img} alt={productName} />
-        <div className="absolute top-3 left-2 text-[#5A3FF2] bg-white text-sm rounded-lg text-gray-700 border border-gray-600/20 px-2 py-1">{tag}</div>
+        <img className={` ${imageSize()}h-full w-full object-contain transition-all duration-200 ease-in group-hover:scale-110 rounded-lg relative`} src={img} alt={productName} />
+        <div className="absolute top-1 left-1 bg-white text-xs rounded-lg text-gray-700 border border-gray-600/20 px-2 py-1">{tag}</div>
       </div>
       <div className="bg-[#FFFDF9] flex flex-col">
-        <span className="text-sm font-medium ">{category}</span>
+        <span className="text-sm font-medium text-gray-500">{category}</span>
         <h1 className="font-bold capitalize text-lg text-[#1F2038]"> {productName}</h1>
         <p className="text-[#5A3FF2] font-medium">{price}</p>
       </div> 
     </div>
+
   );
 };
 export default Card;

@@ -56,7 +56,7 @@ const Leftbar = () => {
   const [active, setActive] = useState("home");
   const [expanded, setExpanded] = useState(true);
   return (
-    <div className={`bg-[#FFFDF9] transition-all duration-400 ease-in-out overflow-hidden ${expanded ? "w-64" :"md:w-16 w-13"}`}>
+    <div className={`bg-[#FFFDF9] transition-all duration-400 ease-in-out overflow-hidden ${expanded ? "w-60" :"md:w-16 w-13"}`}>
       <div className={`flex py-2 px-4 shadow-sm border-2 border-[#EAEAEA]  md:rounded-t-lg transition-all duration-400 ease-in-out ${expanded ? " w-full justify-between" :"md:w-16 w-13 bg-[#6D4AFF] justify-center"}`}>
         <RiShoppingBagFill className={`h-7 w-7 text-[#6D4AFF] transition-all duration-300 ease-in-out ${expanded ? "opacity-100" : "opacity-0"}`} />
         <button onClick={() => setExpanded(!expanded)}>
@@ -67,7 +67,7 @@ const Leftbar = () => {
           )}
         </button>
       </div>
-      <div className={`lower-panel border-l-2 border-b-2 border-r-2 border-[#EAEAEA] flex flex-col items-center shadow-sm px-3 rounded-b-lg py-4 transition-all duration-300 ease-in-out
+      <div className={`lower-panel border-l-2 border-b-2 border-r-2 border-[#EAEAEA] flex flex-col items-center shadow-sm px-2 rounded-b-lg py-4 transition-all duration-300 ease-in-out
         ${expanded ? "w-full" : "md:w-16 w-13 pt-0"}`}>
         <div className={`flex justify-between w-full transition-all duration-300 ease-in-out ${expanded ? "opacity-100 h-normal" :"opacity-0 h-0"}`}>
           <h1 className={`mx-2 text-base font-medium text-gray-600 `}>BROWSE</h1>
