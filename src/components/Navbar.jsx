@@ -33,17 +33,18 @@ const links = [
   },
 ];
 
-const Navbar = ({ menuToggle, setMenuToggle }) => {
+const Navbar = () => {
   const navigate = useNavigate()
   const btnClick =()=>{
     navigate ('/Cartpage')
   }
   const [active, setActive] = useState("shop");
+  const [menuToggle, setMenuToggle] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#FFFDF9] border-b border-[#EAEAEA] shadow-sm">
+    <nav className="md:sticky transition-all duration-200 ease-in top-0 z-50 bg-[#FFFDF9] border-b border-[#EAEAEA] shadow-sm relative">
 
-      <div className="max-w-[1440px] mx-auto h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6">
+      <div className="max-w-[1440px] mx-auto h-15 sm:h-20 flex items-center justify-between px-3 sm:px-6">
 
         <div className="flex items-center sm:gap-3">
 
@@ -76,7 +77,7 @@ const Navbar = ({ menuToggle, setMenuToggle }) => {
 
           <div className="flex items-center w-[360px] h-12 rounded-xl border border-gray-200 bg-white px-4">
 
-            <Search size={20} className="text-gray-400" />
+            <Search size={20} className=" text-gray-400" />
 
             <input
               type="text"
@@ -92,7 +93,7 @@ const Navbar = ({ menuToggle, setMenuToggle }) => {
           />
 
 
-          <button onClick={btnClick} className="flex items-center gap-2 active:scale-95 bg-[#6D4AFF] hover:bg-[#5A38EA] transition text-white rounded-xl px-4 py-3 cursor-pointer">
+          <button onClick={btnClick} className="flex items-center gap-2 active: bg-[#6D4AFF] hover:bg-[#5A38EA] transition text-white rounded-xl px-4 py-3 cursor-pointer">
 
             <ShoppingCart className="h-6" />
 
@@ -109,13 +110,15 @@ const Navbar = ({ menuToggle, setMenuToggle }) => {
         </div>
 
 
-        <div className="flex lg:hidden items-center gap-4">
+        <div className="flex lg:hidden items-center gap-3">
+            <Search size={22} className=" text-[#6D4AFF] " />
 
-          <button className="relative bg-[#6D4AFF] text-white p-2 rounded-xl">
+
+          <button className="relative bg-[#6D4AFF] text-white px-2 py-1 rounded-xl">
 
             <ShoppingCart className="h-5 w-5" />
 
-            <div className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex justify-center items-center">
+            <div className="absolute transition duration-200 ease-in -top-3 -right-2 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex justify-center items-center">
               0
             </div>
 
@@ -124,7 +127,7 @@ const Navbar = ({ menuToggle, setMenuToggle }) => {
           <button
             onClick={() => setMenuToggle(!menuToggle)}
           >
-            {menuToggle ? <X size={30} /> : <Menu size={30} />}
+            {menuToggle ? <X size={27} /> : <Menu size={27} />}
           </button>
 
         </div>
@@ -132,23 +135,20 @@ const Navbar = ({ menuToggle, setMenuToggle }) => {
       </div>
 
 
-      {menuToggle && (
+      
 
-        <div className="lg:hidden border-t bg-white px-6 py-5 space-y-2 shadow-md">
+     <div
+  className={`absolute right-1 mt-1 lg:hidden rounded-lg border border-gray-300 bg-white w-36 pl-3 py-2 shadow-md transition-all duration-300 ease-in-out origin-top-right
+  ${
+    menuToggle
+      ? "opacity-100 scale-100 translate-y-0 "
+      : "opacity-0 scale-95 -translate-y-2"
+  }`}
+>
 
-          <div className="flex items-center border rounded-xl px-4 h-8 ">
+         
 
-            <Search size={20} className="text-gray-400" />
-
-            <input
-              type="text"
-              placeholder="Search products..."
-              className="ml-3 w-full outline-none"
-            />
-
-          </div>
-
-          <div className="flex gap-3 justify-between">
+          <div className="flex flex-col gap-3 font-medium ">
 
             {links.map((link) => (
               <NavbarLink
@@ -174,7 +174,7 @@ const Navbar = ({ menuToggle, setMenuToggle }) => {
 
         </div>
 
-      )}
+      
 
     </nav>
   );
