@@ -44,15 +44,15 @@ const Navbar = () => {
   return (
     <nav className="md:sticky transition-all duration-200 ease-in top-0 z-50 bg-[#FFFDF9] border-b border-[#EAEAEA] shadow-sm relative">
 
-      <div className="max-w-[1440px] mx-auto h-15 sm:h-20 flex items-center justify-between px-3 sm:px-6">
+      <div className="max-w-[1440px] mx-auto h-20 sm:h-20 flex items-center justify-between px-3 sm:px-6">
 
         <div className="flex items-center sm:gap-3">
 
           <RiShoppingBagFill
-            className="text-[#6D4AFF] h-8 w-8 sm:h-10 sm:w-10"
+            className="text-[#6D4AFF] h-9 w-9 sm:h-10 sm:w-10"
           />
 
-          <h1 className="text-xl sm:text-3xl font-bold">
+          <h1 className="text-2xl sm:text-3xl font-bold">
             Shop<span className="text-[#6D4AFF]">Sphere</span>
           </h1>
 
@@ -110,11 +110,11 @@ const Navbar = () => {
         </div>
 
 
-        <div className="flex lg:hidden items-center gap-3">
-            <Search size={22} className=" text-[#6D4AFF] " />
+        <div className="flex lg:hidden items-center gap-4">
+            <Search size={25} className=" text-[#6D4AFF] " />
 
 
-          <button className="relative bg-[#6D4AFF] text-white px-2 py-1 rounded-xl">
+          <button className="relative bg-[#6D4AFF] text-white px-3 py-2 rounded-xl">
 
             <ShoppingCart className="h-5 w-5" />
 
@@ -127,7 +127,7 @@ const Navbar = () => {
           <button
             onClick={() => setMenuToggle(!menuToggle)}
           >
-            {menuToggle ? <X size={27} /> : <Menu size={27} />}
+            {menuToggle ? <X size={30} /> : <Menu size={30} />}
           </button>
 
         </div>
@@ -138,7 +138,7 @@ const Navbar = () => {
       
 
      <div
-  className={`absolute right-1 mt-1 lg:hidden rounded-lg border border-gray-300 bg-white w-36 pl-3 py-2 shadow-md transition-all duration-300 ease-in-out origin-top-right
+  className={`absolute right-1 mt-1 lg:hidden rounded-lg border border-gray-300 bg-white w-40 pl-3 py-5 shadow-md transition-all duration-300 ease-in-out origin-top-right
   ${
     menuToggle
       ? "opacity-100 scale-100 translate-y-0 "
@@ -148,7 +148,7 @@ const Navbar = () => {
 
          
 
-          <div className="flex flex-col gap-3 font-medium ">
+          <div className="flex flex-col gap-4 font-medium ">
 
             {links.map((link) => (
               <NavbarLink

@@ -1,6 +1,8 @@
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { RiShoppingBagFill } from "@remixicon/react";
+
 
 const ProductDetailCard = ({
   image,
@@ -26,8 +28,8 @@ const [button, setButton] = useState("")
 }
 
   return (
-    <div className="grid gap-8 rounded-2xl bg-white p-6 shadow-[0_8px_30px_rgba(31,32,56,0.08)] md:grid-cols-2">
-      <div className="flex min-h-[320px] items-center justify-center rounded-2xl bg-[#F2EBFB] p-6">
+    <div className="grid gap-5 sm:gap-10 rounded-2xl bg-white p-6 shadow-[0_8px_30px_rgba(31,32,56,0.08)] md:grid-cols-2">
+      <div className="flex min-h-[320px] items-center justify-center rounded-2xl bg-[#F2EBFB] sm:p-6">
         <img
           src={image}
           alt={heading}
@@ -46,9 +48,9 @@ const [button, setButton] = useState("")
           <h1 className="text-2xl font-semibold text-[#5A3FF2]">{price}</h1>
           <p className="text-base leading-7 text-gray-600">{para}</p>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 flex lg:block flex-row gap-7 items-center">
           <div>
-            <h1 className="font-semibold text-[#1F2038]">Color</h1>
+            <h1 className="font-semibold text-[#1F2038]">Color:</h1>
           </div>
           <div className="flex gap-3">
             {colorBtn1 && (
@@ -77,24 +79,24 @@ const [button, setButton] = useState("")
             )}
           </div>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 flex lg:block items-center gap-7">
           <div>
-            <h1 className="font-semibold text-[#1F2038]">Size</h1>
+            <h1 className="font-semibold text-[#1F2038]">Size:</h1>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <button onClick={()=>setButton("small")} className={`rounded-lg border  px-4 py-2 ${button==="small" ? btnClicked.clicked :btnClicked.normal }`}>
+          <div className="flex flex-wrap sm:gap-3 gap-2">
+            <button onClick={()=>setButton("small")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="small" ? btnClicked.clicked :btnClicked.normal }`}>
               S
             </button>
-            <button onClick={()=>setButton("medium")} className={`rounded-lg border  px-4 py-2 ${button==="medium" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setButton("medium")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="medium" ? btnClicked.clicked :btnClicked.normal }`}>
               M
             </button>
-            <button onClick={()=>setButton("large")} className={`rounded-lg border  px-4 py-2 ${button==="large" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setButton("large")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="large" ? btnClicked.clicked :btnClicked.normal }`}>
               L
             </button>
-            <button onClick={()=>setButton("Xlarge")} className={`rounded-lg border  px-4 py-2 ${button==="Xlarge" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setButton("Xlarge")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="Xlarge" ? btnClicked.clicked :btnClicked.normal }`}>
               XL
             </button>
-            <button onClick={()=>setButton("XXlarge")} className={`rounded-lg  px-4 py-2 ${button==="XXlarge" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setButton("XXlarge")} className={`rounded-lg border px-3 py-1  sm:px-4 sm:py-2 ${button==="XXlarge" ? btnClicked.clicked :btnClicked.normal }`}>
               XXL
             </button>
           </div>
@@ -104,7 +106,10 @@ const [button, setButton] = useState("")
             {" "}
             <ShoppingCart className="h-6 w-6" /> Add to Cart
           </button>
-          <button className="bg-[#1F2038] cursor-pointer hover:bg-[#2B2344] transition duration-200 ease-in active:scale-95 h-10 w-36 flex justify-center items-center text-white font-medium rounded-lg">
+          <button className="bg-[#1F2038] gap-1 cursor-pointer hover:bg-[#2B2344] transition duration-200 ease-in active:scale-95 h-10 w-36 flex justify-center items-center text-white font-medium rounded-lg">
+            <RiShoppingBagFill
+            className="h-6 w-6 text-white"
+          />
             Buy Now
           </button>
         </div>

@@ -72,7 +72,7 @@ export const products = [
     img: silverWatch,
     tag: "Popular",
     category: "Watches",
-    productName: "Classic Silver Watch",
+    productName: "Silver Watch",
     price: "PKR 6,999",
   },
   {
@@ -88,7 +88,7 @@ export const products = [
     img: fashionSneaker,
     tag: "Trending",
     category: "Shoes",
-    productName: "White Fashion Sneakers",
+    productName: " Fashion Sneakers",
     price: "PKR 4,999",
   },
   {
@@ -112,7 +112,7 @@ export const products = [
     img: leatherWatch,
     tag: "Sale",
     category: "Watches",
-    productName: "Classic Leather Watch",
+    productName: "Leather Watch",
     price: "PKR 4,799",
   },
   {
@@ -120,7 +120,7 @@ export const products = [
     img: tShirt,
     tag: "New",
     category: "Clothing",
-    productName: "Classic White T-Shirt",
+    productName: "White T-Shirt",
     price: "PKR 1,499",
   },
   {
@@ -152,7 +152,7 @@ export const products = [
     img: runningShoes,
     tag: "Popular",
     category: "Shoes",
-    productName: "Sport Running Shoes",
+    productName: "Sport Shoes",
     price: "PKR 5,499",
   },
   {
@@ -168,7 +168,7 @@ export const products = [
     img: shoulderbag,
     tag: "Sale",
     category: "Bags",
-    productName: "Classic Shoulder Bag",
+    productName: "Shoulder Bag",
     price: "PKR 3,799",
   },
   {
@@ -184,7 +184,7 @@ export const products = [
     img: chronograph,
     tag: "New",
     category: "Watches",
-    productName: "Premium Chronograph",
+    productName: "Elite Chronograph",
     price: "PKR 7,499",
   },
   {
@@ -224,7 +224,7 @@ export const products = [
     img: baseball,
     tag: "New",
     category: "Accessories",
-    productName: "Classic Baseball Cap",
+    productName: "Baseball Cap",
     price: "PKR 999",
   },
   {
@@ -232,7 +232,7 @@ export const products = [
     img: luxury,
     tag: "Trending",
     category: "Watches",
-    productName: "Luxury Wrist Watch",
+    productName: " Wrist Watch",
     price: "PKR 8,999",
   },
   {

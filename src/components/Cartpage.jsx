@@ -14,7 +14,7 @@ const Cartpage = () => {
   }
   
   return (
-    <section className="bg-[#FFFDF9] min-h-screen pt-4 pb-2 px-5">
+    <section className="bg-[#FFFDF9] min-h-screen pt-4 pb-2 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
           <div>
@@ -32,7 +32,7 @@ const Cartpage = () => {
 
 
           <h2 className="text-4xl font-bold text-[#2B2344]">
-            Your Cart Feels Lonely
+            Your Cart Is Empty
           </h2>
 
 
