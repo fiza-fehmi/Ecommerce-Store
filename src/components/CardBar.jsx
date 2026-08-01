@@ -7,7 +7,7 @@ const CardBar = () => {
        <div className="flex">
         <h1 className="uppercase text-black font-medium text-xl py-3">All Products</h1>
       </div>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-5">
       {products.map((link)=>(
       <Card
       key={link.id}

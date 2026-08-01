@@ -5,6 +5,7 @@ import ProductDetailCard from "./ProductDetailCard";
 const ProductDetail = () => {
   const { productId } = useParams();
   const product = products.find((item) => item.id === productId);
+ 
 
   if (!productId) {
     return (

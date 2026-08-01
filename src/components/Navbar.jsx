@@ -8,6 +8,7 @@ import {
   X,
 } from "lucide-react";
 import NavbarLink from "./NavbarLink";
+import { useNavigate } from "react-router-dom";
 
 const links = [
   {
@@ -32,16 +33,18 @@ const links = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ menuToggle, setMenuToggle }) => {
+  const navigate = useNavigate()
+  const btnClick =()=>{
+    navigate ('/Cartpage')
+  }
   const [active, setActive] = useState("shop");
-  const [menuToggle, setMenuToggle] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 bg-[#FFFDF9] border-b border-[#EAEAEA] shadow-sm">
 
       <div className="max-w-[1440px] mx-auto h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6">
 
-        {/* Logo */}
         <div className="flex items-center sm:gap-3">
 
           <RiShoppingBagFill
@@ -54,7 +57,6 @@ const Navbar = () => {
 
         </div>
 
-        {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-8">
 
           {links.map((link) => (
@@ -69,10 +71,8 @@ const Navbar = () => {
 
         </div>
 
-        {/* Right Side */}
         <div className="hidden lg:flex items-center gap-5">
 
-          {/* Search */}
 
           <div className="flex items-center w-[360px] h-12 rounded-xl border border-gray-200 bg-white px-4">
 
@@ -91,9 +91,8 @@ const Navbar = () => {
             size={23}
           />
 
-          {/* Cart */}
 
-          <button className="flex items-center gap-2 bg-[#6D4AFF] hover:bg-[#5A38EA] transition text-white rounded-xl px-4 py-3 cursor-pointer">
+          <button onClick={btnClick} className="flex items-center gap-2 active:scale-95 bg-[#6D4AFF] hover:bg-[#5A38EA] transition text-white rounded-xl px-4 py-3 cursor-pointer">
 
             <ShoppingCart className="h-6" />
 
@@ -109,7 +108,6 @@ const Navbar = () => {
 
         </div>
 
-        {/* Mobile Right */}
 
         <div className="flex lg:hidden items-center gap-4">
 
@@ -133,7 +131,6 @@ const Navbar = () => {
 
       </div>
 
-      {/* Mobile Menu */}
 
       {menuToggle && (
 
