@@ -15,7 +15,7 @@ const Card = ({
   return (
     <Link
       to={`/products/${id}`}
-      className="block w-[190px] border border-gray-600/20 rounded-lg cursor-pointer transition-all duration-300 overflow-hidden ease-in group p-2 bg-[#FFFDF9] shadow-[0_4px_18px_rgba(31,32,56,0.10)]"
+      className="block w-[240px] sm:w-[190px] border border-gray-600/20 rounded-lg cursor-pointer transition-all duration-300 overflow-hidden ease-in group p-2 bg-[#FFFDF9] shadow-[0_4px_18px_rgba(31,32,56,0.10)]"
     >
       <div className="relative h-44 items-center rounded-lg justify-center w-full overflow-hidden flex  bg-[#F2EBFB]">
         <img className={` ${imageSize()}h-full w-full object-contain transition-all duration-200 ease-in group-hover:scale-110 rounded-lg relative`} src={img} alt={productName} />
