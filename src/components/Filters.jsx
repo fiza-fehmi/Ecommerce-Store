@@ -38,24 +38,24 @@ const Filters = () => {
             <label className="font-medium text-base text-[#1F2038]">Size</label>
             <select className="text-[15px] border border-[#D9D9D9] w-40 h-8 rounded-lg">
                 <option value="">All Sizes</option>
-                <option value="">Clothing</option>
-                <option value="">Shoes</option>
-                <option value="">Bags</option>
-                <option value="">Watches</option>
-                <option value="">Accessories</option>
-                <option value="">Electronics</option>
+                <option value="">S</option>
+                <option value="">M</option>
+                <option value="">L</option>
+                <option value="">XL</option>
+                <option value="">XXL</option>
+                
             </select>
         </div>
            <div className="flex flex-col">
             <label className="font-medium text-base text-[#1F2038]">Color</label>
             <select className="text-[15px] border border-[#D9D9D9] w-40 h-8 rounded-lg">
                 <option value="">All Colors</option>
-                <option value="">Clothing</option>
-                <option value="">Shoes</option>
-                <option value="">Bags</option>
-                <option value="">Watches</option>
-                <option value="">Accessories</option>
-                <option value="">Electronics</option>
+                <option value="">Black</option>
+                <option value="">Pink</option>
+                <option value="">Green</option>
+                <option value="">Yellow</option>
+                <option value="">Brown</option>
+                <option value="">Gray</option>
             </select>
         </div>
         </div>
