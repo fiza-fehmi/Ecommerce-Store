@@ -8,15 +8,22 @@ import Checkout from "./components/Checkout";
 const App = () => {
    const [menuToggle, setMenuToggle] = useState(false);
   return (
-    <div>
+    //old line
+    // <div>
+    // new line
+    <div className="overflow-x-hidden">
       <Navbar
         menuToggle={menuToggle}
         setMenuToggle={setMenuToggle} />
       <Routes> 
-        <Route path="/" element={ <HomePage
+      {/*// old line*/}
+        {/* <Route path="/" element={ <HomePage
               menuToggle={menuToggle}
               setMenuToggle={setMenuToggle}
-            />} />
+            />} /> */}
+
+             {/*// New line*/}
+             <Route path="/" element={ <HomePage />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/Cartpage" element={<Cartpage />} />
         <Route path="/Checkout" element={<Checkout />} />

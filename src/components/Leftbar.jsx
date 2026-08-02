@@ -10,60 +10,84 @@ import {
   Gift,
   PanelLeftClose,
   PanelLeftOpen,
+  X,
 } from "lucide-react";
 import { RiShoppingBagFill } from "@remixicon/react";
 import { useState } from "react";
 
-const Leftbar = ({filters,setFilters}) => {
+// const Leftbar = () => {  ⚠️ koi props receive nahi ho rahi
+
+  const Leftbar = ({ menuToggle, setMenuToggle }) => {   //es m props recive ki
   const Links = [
     {
       icon: <House />,
       btnName: "All Products",
-      id: "all",
+      id: "home",
     },
     {
       icon: <Shirt />,
       btnName: "Clothing",
-      id: "Clothing",
+      id: "cloth",
     },
     {
       icon: <SportShoe />,
       btnName: "Shoes",
-      id: "Shoes",
+      id: "shoe",
     },
     {
       icon: <Handbag />,
       btnName: "Bags",
-      id: "Bags",
+      id: "bag",
     },
     {
       icon: <Watch />,
       btnName: "Watches",
-      id: "Watches",
+      id: "watch",
     },
     {
       icon: <Wrench />,
       btnName: "Accessories",
-      id: "Accessories",
+      id: "more",
     },
     {
       icon: <Unplug />,
       btnName: "Electronics",
-      id: "Electronics",
+      id: "electric",
     },
   ];
 
-  const [active, setActive] = useState("all");
+  const [active, setActive] = useState("home");
   const [expanded, setExpanded] = useState(true);
 
   return (
+<>
+    {menuToggle && (
+      <div
+        className="fixed inset-0 bg-black/40 z-30 md:hidden"
+        onClick={() => setMenuToggle(false)}
+      />
+    )}
+
+    {/* old line
     <aside
       className={`hidden md:block bg-[#FFFDF9] transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0 ${
         expanded ? "w-60 lg:w-64" : "w-16"
       }`}
     >
+    */}
+
+    {/* change line */}
+    <aside
+      className={`fixed md:static top-20 left-0 h-[calc(100%-5rem)] md:h-auto z-40 bg-[#FFFDF9] transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0 ${
+        menuToggle ? "translate-x-0" : "-translate-x-full"
+      } md:translate-x-0 ${
+        expanded ? "w-60 lg:w-64" : "w-16"
+      }`}
+    >
+
+      {/* //old line */}
       {/* Header */}
-      <div
+      {/* <div
         className={`flex items-center border-2 border-[#EAEAEA] shadow-sm md:rounded-t-lg transition-all duration-300 h-14 ${
           expanded
             ? "justify-between px-4"
@@ -85,7 +109,40 @@ const Leftbar = ({filters,setFilters}) => {
           )}
         </button>
       </div>
+ */}
+{/* new line */}
+{/* Header */}
+<div
+  className={`flex items-center border-2 border-[#EAEAEA] shadow-sm md:rounded-t-lg transition-all duration-300 h-14 ${
+    expanded
+      ? "justify-between px-4"
+      : "justify-center bg-[#6D4AFF]"
+  }`}
+>
+  {expanded && (
+    <RiShoppingBagFill className="h-7 w-7 text-[#6D4AFF]" />
+  )}
 
+  <button
+    onClick={() => setExpanded(!expanded)}
+    className="cursor-pointer"
+  >
+    {expanded ? (
+      <PanelLeftOpen className="text-gray-600 h-6 w-6" />
+    ) : (
+      <PanelLeftClose className="text-white h-6 w-6" />
+    )}
+  </button>
+
+  {expanded && (
+    <button
+      onClick={() => setMenuToggle(false)}
+      className="md:hidden ml-2"
+    >
+      <X className="h-6 w-6 text-gray-600" />
+    </button>
+  )}
+</div>
       {/* Body */}
       <div
         className={`border-x-2 border-b-2 border-[#EAEAEA] shadow-sm md:rounded-b-lg flex flex-col items-center transition-all duration-300 ${
@@ -108,7 +165,7 @@ const Leftbar = ({filters,setFilters}) => {
               icon={link.icon}
               btnName={link.btnName}
               active={active === link.id}
-              onClick={() =>{ setActive(link.id); setFilters(link.id);}}
+              onClick={() => setActive(link.id)}
               expanded={expanded}
             />
           ))}
@@ -129,7 +186,11 @@ const Leftbar = ({filters,setFilters}) => {
         )}
       </div>
     </aside>
+    
+  </>
   );
+  
 };
+
 
 export default Leftbar;
