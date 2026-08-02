@@ -32,14 +32,16 @@ const links = [
     id: "about",
   },
 ];
-
-const Navbar = () => {
+//old line
+// const Navbar = () => { // ⚠️ props receive nahi ho rahi
+// new line
+const Navbar = ({ menuToggle, setMenuToggle }) => {
   const navigate = useNavigate()
   const btnClick =()=>{
     navigate ('/Cartpage')
   }
   const [active, setActive] = useState("shop");
-  const [menuToggle, setMenuToggle] = useState(false);
+  // const [menuToggle, setMenuToggle] = useState(false); // ⚠️ apna alag local state bana liya
 
   return (
     <nav className="md:sticky transition-all duration-200 ease-in top-0 z-50 bg-[#FFFDF9] border-b border-[#EAEAEA] shadow-sm relative">
@@ -139,11 +141,11 @@ const Navbar = () => {
 
      <div
   className={`absolute right-1 mt-1 lg:hidden rounded-lg border border-gray-300 bg-white w-40 pl-3 py-5 shadow-md transition-all duration-300 ease-in-out origin-top-right
-  ${
-    menuToggle
-      ? "opacity-100 scale-100 translate-y-0 "
-      : "opacity-0 scale-95 -translate-y-2"
-  }`}
+ ${
+  menuToggle
+    ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+    : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+}`}
 >
 
          

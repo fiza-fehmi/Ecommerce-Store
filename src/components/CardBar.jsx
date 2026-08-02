@@ -1,22 +1,38 @@
 import Card from "./Card";
+import { useState } from "react";
 import { products } from "../data/products";
 import Filters from "./Filters";
 import FilterToggle from "./FilterToggle";
 
 const CardBar = () => {
+  //new line inside compnent state management
+  const [filterOpen, setFilterOpen] = useState(false);
   return (
     <div className="relative transition duration-300 ease-in">
        <div className="hidden sm:flex">
         <h1 className="uppercase text-black sm:font-bold font-medium text-lg sm:text-xl sm:py-3 sm:px-3">All Products</h1>  
       </div>
-      <div className="sm:hidden">
-      <div className=" flex items-center justify-between px-5 py-1">
-        <FilterToggle />
-         <div className={` flex-col  gap-5 hidden`}>
-        <div className="flex flex-col ">
-        <div className="flex flex-col">
+         {/* //old line */}
+      {/* <div className="sm:hidden">
+      <div className=" flex items-center justify-between px-5 py-1"> */}
+        {/* //New line */}
+      <div className="sm:hidden relative">
+  <div className="flex items-center justify-between px-5 py-1">
+        {/* <FilterToggle /> */}
+        {/* //New line to pass props */}
+        <FilterToggle open={filterOpen} setOpen={setFilterOpen} />
+           {/* //old line */}
+         {/* <div className={` flex-col  gap-5 hidden`}> */}
+
+         {/* //New line */}
+       <div className={`flex-col gap-5 ${filterOpen ? "flex" : "hidden"} absolute top-14 left-2 right-2 z-20 bg-white p-4 rounded-lg shadow-md border border-gray-200`}>
+       {/* //old line */}
+        {/* <div className="flex flex-col "> */}
+        {/* //New line */}
+     <div className="grid grid-cols-2 gap-3">
+       <div className="flex flex-col min-w-0">
             <label className="font-medium text-base text-[#1F2038]">Category</label>
-            <select className="text-[15px] border border-[#D9D9D9] w-40 h-8 rounded-lg">
+          <select className="text-[15px] border border-[#D9D9D9] w-full h-8 rounded-lg">
                 <option value="">All Categories</option>
                 <option value="">Clothing</option>
                 <option value="">Shoes</option>
