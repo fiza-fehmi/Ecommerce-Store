@@ -14,46 +14,46 @@ import {
 import { RiShoppingBagFill } from "@remixicon/react";
 import { useState } from "react";
 
-const Leftbar = () => {
+const Leftbar = ({filters,setFilters}) => {
   const Links = [
     {
       icon: <House />,
       btnName: "All Products",
-      id: "home",
+      id: "all",
     },
     {
       icon: <Shirt />,
       btnName: "Clothing",
-      id: "cloth",
+      id: "Clothing",
     },
     {
       icon: <SportShoe />,
       btnName: "Shoes",
-      id: "shoe",
+      id: "Shoes",
     },
     {
       icon: <Handbag />,
       btnName: "Bags",
-      id: "bag",
+      id: "Bags",
     },
     {
       icon: <Watch />,
       btnName: "Watches",
-      id: "watch",
+      id: "Watches",
     },
     {
       icon: <Wrench />,
       btnName: "Accessories",
-      id: "more",
+      id: "Accessories",
     },
     {
       icon: <Unplug />,
       btnName: "Electronics",
-      id: "electric",
+      id: "Electronics",
     },
   ];
 
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState("all");
   const [expanded, setExpanded] = useState(true);
 
   return (
@@ -108,7 +108,7 @@ const Leftbar = () => {
               icon={link.icon}
               btnName={link.btnName}
               active={active === link.id}
-              onClick={() => setActive(link.id)}
+              onClick={() =>{ setActive(link.id); setFilters(link.id);}}
               expanded={expanded}
             />
           ))}

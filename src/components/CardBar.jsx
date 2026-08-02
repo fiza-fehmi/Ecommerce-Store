@@ -3,7 +3,9 @@ import { products } from "../data/products";
 import Filters from "./Filters";
 import FilterToggle from "./FilterToggle";
 
-const CardBar = () => {
+const CardBar = ({filters}) => {
+    const useFilter= filters === "all" ?
+    products : products.filter((products)=> products.category ===filters);
   return (
     <div className="relative transition duration-300 ease-in">
        <div className="hidden sm:flex">
@@ -73,15 +75,15 @@ const CardBar = () => {
       </div>
       
       <div className="flex z-0 w-full items-center flex-wrap justify-center gap-2 sm:gap-5 transition duration-300 ease-in">
-      {products.map((link)=>(
+      {useFilter.map((products)=>(
       <Card
-      key={link.id}
-      id={link.id}
-      img={link.img}
-      tag={link.tag}
-      category={link.category}
-      productName={link.productName}
-      price={link.price}
+      key={products.id}
+      id={products.id}
+      img={products.img}
+      tag={products.tag}
+      category={products.category}
+      productName={products.productName}
+      price={products.price}
        />
       ))}
       </div>
