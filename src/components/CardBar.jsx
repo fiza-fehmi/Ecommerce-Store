@@ -1,11 +1,9 @@
 import Card from "./Card";
 import { products } from "../data/products";
 import Filters from "./Filters";
-import { Funnel } from "lucide-react";
-import { useState } from "react";
+import FilterToggle from "./FilterToggle";
 
 const CardBar = () => {
-  const [filterToggle, setFilterToggle] = useState(false)
   return (
     <div className="relative transition duration-300 ease-in">
        <div className="hidden sm:flex">
@@ -13,13 +11,8 @@ const CardBar = () => {
       </div>
       <div className="sm:hidden">
       <div className=" flex items-center justify-between px-5 py-1">
-        <h1 className="uppercase text-black sm:font-bold font-medium text-lg sm:text-xl py-3 px-3">All Products</h1> 
-        <button onClick={()=>{setFilterToggle(!filterToggle)}} className="flex border h-8 w-20 justify-center items-center rounded-lg bg-gray-50 text-[#6D4AFF] border-[#6D4AFF]">
-        <Funnel className="h-5 w-5 text-[#6D4AFF]" />
-        Filter
-        </button>
-        
-         <div className={`flex flex-col absolute justify-center -bottom-40 left-30 gap-5 sm:hidden ${filterToggle ? "flex" :"hidden"}`}>
+        <FilterToggle />
+         <div className={` flex-col  gap-5 hidden`}>
         <div className="flex flex-col ">
         <div className="flex flex-col">
             <label className="font-medium text-base text-[#1F2038]">Category</label>
@@ -37,12 +30,11 @@ const CardBar = () => {
             <label className="font-medium text-base text-[#1F2038]">Price</label>
             <select className="text-[15px] border border-[#D9D9D9] w-40 h-8 rounded-lg">
                 <option value="">All Prices</option>
-                <option value="">Clothing</option>
-                <option value="">Shoes</option>
-                <option value="">Bags</option>
-                <option value="">Watches</option>
-                <option value="">Accessories</option>
-                <option value="">Electronics</option>
+                <option value="">PKR 1,000 – PKR 2,500</option>
+                <option value="">PKR 2,500 – PKR 5,000</option>
+                <option value="">PKR 5,000 – PKR 10,000</option>
+                <option value="">Above PKR 10,000</option>
+                
             </select>
         </div>
           
