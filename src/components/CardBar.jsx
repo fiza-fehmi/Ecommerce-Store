@@ -9,17 +9,17 @@ const CardBar = () => {
   return (
     <div className="relative transition duration-300 ease-in">
        <div className="hidden sm:flex">
-        <h1 className="uppercase text-black sm:font-bold font-medium text-lg sm:text-xl py-3 px-3">All Products</h1>  
+        <h1 className="uppercase text-black sm:font-bold font-medium text-lg sm:text-xl sm:py-3 sm:px-3">All Products</h1>  
       </div>
-      <div className="sm:hidden relative">
+      <div className="sm:hidden">
       <div className=" flex items-center justify-between px-5 py-1">
         <h1 className="uppercase text-black sm:font-bold font-medium text-lg sm:text-xl py-3 px-3">All Products</h1> 
-        <button onClick={()=>{setFilterToggle(!filterToggle); console.log("btn clicked")}} className="flex border h-8 w-20 justify-center items-center rounded-lg bg-gray-50 text-[#6D4AFF] border-[#6D4AFF]">
+        <button onClick={()=>{setFilterToggle(!filterToggle)}} className="flex border h-8 w-20 justify-center items-center rounded-lg bg-gray-50 text-[#6D4AFF] border-[#6D4AFF]">
         <Funnel className="h-5 w-5 text-[#6D4AFF]" />
         Filter
         </button>
-        </div>
-         <div className={`flex flex-col absolute justify-center gap-5 sm:hidden ${filterToggle ? "translate-y-4 opacity-" :"translate-y-4 opacity-100"}`}>
+        
+         <div className={`flex flex-col absolute justify-center -bottom-40 left-30 gap-5 sm:hidden ${filterToggle ? "flex" :"hidden"}`}>
         <div className="flex flex-col ">
         <div className="flex flex-col">
             <label className="font-medium text-base text-[#1F2038]">Category</label>
@@ -69,6 +69,7 @@ const CardBar = () => {
                 <option value="">Brown</option>
                 <option value="">Gray</option>
             </select>
+        </div>
         </div>
         </div>
         </div>

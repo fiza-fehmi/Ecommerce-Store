@@ -18,8 +18,12 @@ const ProductDetailCard = ({
 })  => {
 const [button, setButton] = useState("")
    let navigate =useNavigate()
-  const btnNavigate= () =>{
+  const cartNavigate= () =>{
     navigate('/Cartpage')
+  }
+
+  const buyNavigate= () =>{
+    navigate('/Checkout')
   }
 
     const btnClicked ={
@@ -102,11 +106,11 @@ const [button, setButton] = useState("")
           </div>
         </div>
         <div className="flex justify-center gap-10 space-y-2">
-          <button onClick={btnNavigate} className="bg-[#6D4AFF] transition duration-200 ease-in active:scale-95 hover:bg-[#5A38EA] h-10 w-36 cursor-pointer flex justify-center items-center text-white font-medium gap-1 rounded-lg ">
+          <button onClick={cartNavigate} className="bg-[#6D4AFF] transition duration-200 ease-in active:scale-95 hover:bg-[#5A38EA] h-10 w-36 cursor-pointer flex justify-center items-center text-white font-medium gap-1 rounded-lg ">
             {" "}
             <ShoppingCart className="h-6 w-6" /> Add to Cart
           </button>
-          <button className="bg-[#1F2038] gap-1 cursor-pointer hover:bg-[#2B2344] transition duration-200 ease-in active:scale-95 h-10 w-36 flex justify-center items-center text-white font-medium rounded-lg">
+          <button onClick={buyNavigate} className="bg-[#1F2038] gap-1 cursor-pointer hover:bg-[#2B2344] transition duration-200 ease-in active:scale-95 h-10 w-36 flex justify-center items-center text-white font-medium rounded-lg">
             <RiShoppingBagFill
             className="h-6 w-6 text-white"
           />

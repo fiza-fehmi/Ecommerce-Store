@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import ProductDetail from "./components/ProductDetail";
 import Cartpage from "./components/Cartpage";
 import { useState } from "react";
+import Checkout from "./components/Checkout";
 const App = () => {
    const [menuToggle, setMenuToggle] = useState(false);
   return (
@@ -18,6 +19,7 @@ const App = () => {
             />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/Cartpage" element={<Cartpage />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

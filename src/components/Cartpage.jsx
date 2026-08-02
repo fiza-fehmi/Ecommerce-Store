@@ -18,8 +18,7 @@ const Cartpage = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
           <div>
-            <h1 className="text-3xl font-bold text-[#2B2344]">Your Cart</h1>
-
+            <h1 className="text-2xl font-bold text-[#2B2344]">Your Cart</h1>
           </div>
 
         
