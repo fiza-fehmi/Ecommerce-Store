@@ -7,25 +7,20 @@ import { useState } from "react";
 import Checkout from "./components/Checkout";
 const App = () => {
    const [menuToggle, setMenuToggle] = useState(false);
+   const [cartItems, setCartItems] = useState([])
   return (
-    //old line
-    // <div>
-    // new line
     <div className="overflow-x-hidden">
       <Navbar
         menuToggle={menuToggle}
-        setMenuToggle={setMenuToggle} />
+        setMenuToggle={setMenuToggle}
+        cartItems={cartItems} 
+        setCartItems={setCartItems}/>
       <Routes> 
-      {/*// old line*/}
-        {/* <Route path="/" element={ <HomePage
-              menuToggle={menuToggle}
-              setMenuToggle={setMenuToggle}
-            />} /> */}
-
-             {/*// New line*/}
              <Route path="/" element={ <HomePage />} />
-        <Route path="/products/:productId" element={<ProductDetail />} />
-        <Route path="/Cartpage" element={<Cartpage />} />
+        <Route path="/products/:productId" element={<ProductDetail  cartItems={cartItems} setCartItems={setCartItems}
+         />} />
+        <Route path="/Cartpage" element={<Cartpage cartItems={cartItems} setCartItems={setCartItems} 
+         />} />
         <Route path="/Checkout" element={<Checkout />} />
       </Routes>
     </div>

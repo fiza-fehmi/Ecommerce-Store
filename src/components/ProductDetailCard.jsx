@@ -15,12 +15,14 @@ const ProductDetailCard = ({
   colorBtn2,
   colorBtn3,
   colorBtn4,
+  product,
+  cartItems,
+  setCartItems
 })  => {
+
 const [button, setButton] = useState("")
    let navigate =useNavigate()
-  const cartNavigate= () =>{
-    navigate('/Cartpage')
-  }
+ 
 
   const buyNavigate= () =>{
     navigate('/Checkout')
@@ -30,7 +32,10 @@ const [button, setButton] = useState("")
     normal :"border-gray-200",
     clicked:"text-[#2B2344] border border-[#2B2344] font-medium",
 }
+const addToCart= ()=>{
+  setCartItems ([...cartItems ,product])
 
+}
   return (
     <div className="grid gap-5 sm:gap-10 rounded-2xl bg-white p-6 shadow-[0_8px_30px_rgba(31,32,56,0.08)] md:grid-cols-2">
       <div className="flex min-h-[320px] items-center justify-center rounded-2xl bg-[#F2EBFB] sm:p-6">
@@ -106,7 +111,7 @@ const [button, setButton] = useState("")
           </div>
         </div>
         <div className="flex justify-center gap-10 space-y-2">
-          <button onClick={cartNavigate} className="bg-[#6D4AFF] transition duration-200 ease-in active:scale-95 hover:bg-[#5A38EA] h-10 w-36 cursor-pointer flex justify-center items-center text-white font-medium gap-1 rounded-lg ">
+          <button onClick={()=>{addToCart();}} className="bg-[#6D4AFF] transition duration-200 ease-in active:scale-95 hover:bg-[#5A38EA] h-10 w-36 cursor-pointer flex justify-center items-center text-white font-medium gap-1 rounded-lg ">
             {" "}
             <ShoppingCart className="h-6 w-6" /> Add to Cart
           </button>

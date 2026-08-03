@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { products } from "../data/products";
 import ProductDetailCard from "./ProductDetailCard";
 
-const ProductDetail = () => {
+const ProductDetail = ({cartItems,setCartItems}) => {
   const { productId } = useParams();
   const product = products.find((item) => item.id === productId);
  
@@ -34,6 +34,9 @@ const ProductDetail = () => {
         heading={product.productName}
         category={product.category}
         price={product.price}
+        product={product}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
         para={`A curated ${product.category.toLowerCase()} pick designed for everyday comfort, quality, and value.`}
         colorBtn1="h-6 w-6 rounded-full border border-gray-300 bg-slate-900"
         colorBtn2="h-6 w-6 rounded-full border border-gray-300 bg-stone-300"

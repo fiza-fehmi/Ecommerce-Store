@@ -68,13 +68,6 @@ import { useState } from "react";
       />
     )}
 
-    {/* old line
-    <aside
-      className={`hidden md:block bg-[#FFFDF9] transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0 ${
-        expanded ? "w-60 lg:w-64" : "w-16"
-      }`}
-    >
-    */}
 
     {/* change line */}
     <aside
@@ -85,32 +78,6 @@ import { useState } from "react";
       }`}
     >
 
-      {/* //old line */}
-      {/* Header */}
-      {/* <div
-        className={`flex items-center border-2 border-[#EAEAEA] shadow-sm md:rounded-t-lg transition-all duration-300 h-14 ${
-          expanded
-            ? "justify-between px-4"
-            : "justify-center bg-[#6D4AFF]"
-        }`}
-      >
-        {expanded && (
-          <RiShoppingBagFill className="h-7 w-7 text-[#6D4AFF]" />
-        )}
-
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="cursor-pointer"
-        >
-          {expanded ? (
-            <PanelLeftOpen className="text-gray-600 h-6 w-6" />
-          ) : (
-            <PanelLeftClose className="text-white h-6 w-6" />
-          )}
-        </button>
-      </div>
- */}
-{/* new line */}
 {/* Header */}
 <div
   className={`flex items-center border-2 border-[#EAEAEA] shadow-sm md:rounded-t-lg transition-all duration-300 h-14 ${

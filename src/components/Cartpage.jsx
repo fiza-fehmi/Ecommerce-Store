@@ -7,21 +7,21 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const Cartpage = () => {
+const Cartpage = ({cartItems}) => {
   const navigate = useNavigate()
   const btnClick =()=>{
     navigate ('/')
   }
-  
+  if(cartItems.length===0){
   return (
+    
     <section className="bg-[#FFFDF9] min-h-screen pt-4 pb-2 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
           <div>
             <h1 className="text-2xl font-bold text-[#2B2344]">Your Cart</h1>
           </div>
-
-        
+          
         </div>
 
         <div className="mt-4 bg-white rounded-2xl border border-[#EAEAEA] shadow-sm px-8 py-8 flex flex-col items-center text-center">
@@ -85,5 +85,20 @@ const Cartpage = () => {
     </section>
   );
 };
+return (
+   <div className="bg-[#FFFDF9] min-h-screen p-6">
+      <h1 className="text-2xl font-bold text-[#2B2344] mb-6">
+        Your Cart
+      </h1>
+      {cartItems.map((item)=>(
+        <div className="flex items-center" key={item.id}>
+          <img src={item.img} alt={item.productName}  className="h-24"></img>
+          {item.productName}
+          </div>
+
+      ))}
+      </div>
+)
+}
 
 export default Cartpage;
