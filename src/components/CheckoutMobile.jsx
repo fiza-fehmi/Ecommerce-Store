@@ -4,14 +4,23 @@ import {
   ChevronDown,
   ShieldCheck,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const CheckoutMobile = () => {
+  const navigate = useNavigate();
+    const btnClick = () => {
+    navigate(-1);
+  };
+  const [delivery, setDelivery] = useState("standard")
+  const [payment, setPayment] = useState("credit")
+
   return (
     <div className="min-h-screen bg-[#F7F5FF] sm:hidden">
 
       {/* Header */}
       <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-4 flex items-center gap-3">
 
-        <button className="h-10 w-10 rounded-full hover:bg-gray-100 flex items-center justify-center transition">
+        <button onClick={btnClick} className="h-10 w-10 rounded-full hover:bg-gray-100 flex items-center justify-center transition">
           <ArrowLeft className="h-5 w-5 text-[#2B2344]" />
         </button>
 
@@ -213,13 +222,14 @@ const CheckoutMobile = () => {
 
   <div className="space-y-3">
 
-    <div className="border-2 border-[#6D4AFF] rounded-xl p-4">
+    <div onClick={()=>setDelivery("standard")}
+    
+     className={`${delivery=== "standard" ? "border-2 border-[#6D4AFF] rounded-xl" : "border-2 border-gray-200 rounded-xl" } p-4`}>
 
-      <div className="flex justify-between">
+      <div  className="flex justify-between">
 
         <div>
-
-          <h3 className="font-semibold text-[#2B2344]">
+          <h3  className="font-semibold text-[#2B2344]">
             Standard Delivery
           </h3>
 
@@ -229,7 +239,7 @@ const CheckoutMobile = () => {
 
         </div>
 
-        <span className="font-semibold text-[#6D4AFF]">
+        <span className={`${delivery==="standard" ? "text-[#6D4AFF]"  : "text-gray-500 "} font-semibold `}>
           Free
         </span>
 
@@ -237,7 +247,9 @@ const CheckoutMobile = () => {
 
     </div>
 
-    <div className="border rounded-xl p-4">
+    <div onClick={()=>setDelivery("express")}
+    
+     className={`${delivery=== "express" ? "border-2 border-[#6D4AFF] rounded-xl" : "border-2 border-gray-200 rounded-xl" } p-4`}>
 
       <div className="flex justify-between">
 
@@ -253,7 +265,7 @@ const CheckoutMobile = () => {
 
         </div>
 
-        <span className="font-semibold">
+        <span className={`${delivery==="express" ? "text-[#6D4AFF]"  : "text-gray-500 "} font-semibold `}>
           $15
         </span>
 
@@ -275,15 +287,15 @@ const CheckoutMobile = () => {
 
   <div className="space-y-3">
 
-    <div className="border-2 border-[#6D4AFF] rounded-xl px-4 py-4">
+    <div onClick={()=>setPayment("credit")} className={`${payment === "credit" ? "border-2 border-[#6D4AFF] rounded-xl" : "border-2 border-gray-200 rounded-xl"}  rounded-xl px-4 py-4`}>
       Credit / Debit Card
     </div>
 
-    <div className="border rounded-xl px-4 py-4">
+    <div onClick={()=>setPayment("cash")} className={`${payment === "cash" ? "border-2 border-[#6D4AFF] rounded-xl" : "border-2 border-gray-200 rounded-xl"}  rounded-xl px-4 py-4`}>
       Cash on Delivery
     </div>
 
-    <div className="border rounded-xl px-4 py-4">
+    <div onClick={()=>setPayment("paypal")} className={`${payment === "paypal" ? "border-2 border-[#6D4AFF] rounded-xl" : "border-2 border-gray-200 rounded-xl"}  rounded-xl px-4 py-4`}>
       PayPal
     </div>
 
@@ -293,7 +305,7 @@ const CheckoutMobile = () => {
 
 {/* Place Order */}
 
-<button className="w-full bg-[#6D4AFF] hover:bg-[#5A38EA] text-white font-semibold py-4 rounded-xl transition duration-200">
+<button className="w-full bg-[#6D4AFF] hover:bg-[#5A38EA] text-white font-semibold py-4 rounded-xl transition duration-200 active:scale-95">
   Place Order
 </button>
 

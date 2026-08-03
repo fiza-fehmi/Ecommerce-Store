@@ -1,8 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { products } from "../data/products";
 import ProductDetailCard from "./ProductDetailCard";
-
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 const ProductDetail = ({cartItems,setCartItems}) => {
+    const navigate = useNavigate();
+    const btnClick = () => {
+    navigate(-1);
+  };
   const { productId } = useParams();
   const product = products.find((item) => item.id === productId);
  
@@ -27,7 +32,12 @@ const ProductDetail = ({cartItems,setCartItems}) => {
   }
 
   return (
-    <div className="mx-auto max-w-5xl p-6">
+<>
+<button onClick={btnClick} className="h-10 w-10 mt-4 ml-5 rounded-full hover:bg-gray-100 flex items-center justify-center transition">
+          <ArrowLeft className="h-5 w-5 text-[#2B2344]" />
+        </button>
+    <div className="mx-auto max-w-5xl sm:p-6 px-4">
+      
       <ProductDetailCard
         image={product.img}
         tag={product.tag}
@@ -43,6 +53,7 @@ const ProductDetail = ({cartItems,setCartItems}) => {
         colorBtn3="h-6 w-6 rounded-full border border-gray-300 bg-indigo-200"
       />
     </div>
+    </>
   );
 };
 

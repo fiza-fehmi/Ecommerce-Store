@@ -31,14 +31,14 @@ const backHome= ()=>{
   return (
     <>
   <CheckoutMobile />
-
-    <div className="px-15 py-2 w-full hidden sm:flex">
-      <div className="flex flex-col w-full justify-center items-center pb-5">
+<div className="flex flex-col w-full justify-center items-center p-5 sm:flex hidden">
         <h1 className="text-3xl font-bold text-[#2B2344]">Checkout</h1>
         <p className="text-gray-500 font-medium text-sm">
           Complete your order by providing a few details
         </p>
       </div>
+    <div className="px-15  w-full hidden sm:flex">
+      
       <div className="flex gap-5">
 
       <div className=" bg-[#FFFDF9] border rounded-lg border-[#EAEAEA] shadow-sm px-5 py-4 w-[60%] flex flex-col gap-6">
