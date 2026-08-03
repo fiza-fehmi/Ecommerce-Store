@@ -16,7 +16,6 @@ const ProductDetailCard = ({
   colorBtn3,
   colorBtn4,
   product,
-  cartItems,
   setCartItems
 })  => {
 
@@ -33,7 +32,7 @@ const [button, setButton] = useState("")
     clicked:"text-[#2B2344] border border-[#2B2344] font-medium",
 }
 const addToCart= ()=>{
-  setCartItems ([...cartItems ,product])
+  setCartItems ((prev)=>[...prev,product])
 
 }
   return (

@@ -8,6 +8,7 @@ import Checkout from "./components/Checkout";
 const App = () => {
    const [menuToggle, setMenuToggle] = useState(false);
    const [cartItems, setCartItems] = useState([])
+   const [category, setCategory] = useState("all");
   return (
     <div className="overflow-x-hidden">
       <Navbar
@@ -16,7 +17,7 @@ const App = () => {
         cartItems={cartItems} 
         setCartItems={setCartItems}/>
       <Routes> 
-             <Route path="/" element={ <HomePage />} />
+             <Route path="/" element={ <HomePage category={category} setCategory={setCategory} />} />
         <Route path="/products/:productId" element={<ProductDetail  cartItems={cartItems} setCartItems={setCartItems}
          />} />
         <Route path="/Cartpage" element={<Cartpage cartItems={cartItems} setCartItems={setCartItems} 

@@ -14,10 +14,8 @@ import {
 } from "lucide-react";
 import { RiShoppingBagFill } from "@remixicon/react";
 import { useState } from "react";
+  const Leftbar = ({ menuToggle, setMenuToggle ,setCategory }) => { 
 
-// const Leftbar = () => {  ⚠️ koi props receive nahi ho rahi
-
-  const Leftbar = ({ menuToggle, setMenuToggle }) => {   //es m props recive ki
   const Links = [
     {
       icon: <House />,
@@ -132,7 +130,14 @@ import { useState } from "react";
               icon={link.icon}
               btnName={link.btnName}
               active={active === link.id}
-              onClick={() => setActive(link.id)}
+              onClick={() => {setActive(link.id); 
+                if(link.id ==="home")
+                  {
+               setCategory("all");
+              }
+            else{
+              setCategory(link.btnName)
+            }}}
               expanded={expanded}
             />
           ))}

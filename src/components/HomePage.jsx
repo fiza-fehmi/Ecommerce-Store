@@ -5,7 +5,7 @@ import { Menu } from "lucide-react"
 //old line
 // const HomePage = ({ menuToggle, setMenuToggle }) => {
   //new line
-  const HomePage = () => {
+  const HomePage = ({category,setCategory}) => {
 //new line
  const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
@@ -18,10 +18,10 @@ import { Menu } from "lucide-react"
         <span className="text-sm font-medium">Categories</span>
       </button>
       <div className="">
-  <Leftbar menuToggle={sidebarOpen} setMenuToggle={setSidebarOpen} />
+  <Leftbar menuToggle={sidebarOpen} setMenuToggle={setSidebarOpen} setCategory={setCategory} />
       </div>
       <div className="flex-1">
-        <CardBar />
+        <CardBar category={category} />
       </div>
 
       
