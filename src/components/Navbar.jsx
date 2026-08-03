@@ -31,12 +31,15 @@ const Navbar = ({ menuToggle, setMenuToggle ,cartItems }) => {
   const btnClick = () => {
     navigate("/Cartpage");
   };
+  const home =()=>{
+    navigate('/')
+  }
   const [active, setActive] = useState("shop");
 
   return (
     <nav className="md:sticky transition-all duration-200 ease-in top-0 z-50 bg-[#FFFDF9] border-b border-[#EAEAEA] shadow-sm relative">
       <div className="max-w-[1440px] mx-auto h-20 sm:h-20 flex items-center justify-between px-3 sm:px-6">
-        <div className="flex items-center sm:gap-3">
+        <div onClick={home} className="flex items-center sm:gap-3">
           <RiShoppingBagFill className="text-[#6D4AFF] h-9 w-9 sm:h-10 sm:w-10" />
 
           <h1 className="text-2xl sm:text-3xl font-bold">

@@ -19,6 +19,7 @@ import {
 import { RiBankCardFill ,RiCashLine ,RiPaypalFill } from "@remixicon/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CheckoutMobile from "./CheckoutMobile";
 
 const Checkout = () => {
   const [Delivery, setDelivery] = useState("standard");
@@ -28,7 +29,10 @@ const backHome= ()=>{
     navigate('/')
 }
   return (
-    <div className="px-15 py-2 w-full">
+    <>
+  <CheckoutMobile />
+
+    <div className="px-15 py-2 w-full hidden sm:flex">
       <div className="flex flex-col w-full justify-center items-center pb-5">
         <h1 className="text-3xl font-bold text-[#2B2344]">Checkout</h1>
         <p className="text-gray-500 font-medium text-sm">
@@ -319,7 +323,7 @@ const backHome= ()=>{
       </div>
       </div>
     </div>
-    
+    </>
   );
 };
 
