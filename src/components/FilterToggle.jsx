@@ -1,9 +1,9 @@
  import { Funnel } from "lucide-react";
-const FilterToggle = ({ open, setOpen }) => {
+const FilterToggle = ({ open, setOpen ,category }) => {
   return (
     <>
-<div className="flex p-3 relative sm:hidden flex-1"> 
-  <h2 className="font-medium">All Products</h2>
+<div className="flex p-3 relative sm:hidden flex-1 font-medium text-lg"> 
+  {category==="all" ? "All Products" : category}
 </div>
 <div className="flex-shrink-0">   
   <button onClick={()=>{

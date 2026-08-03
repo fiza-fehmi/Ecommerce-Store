@@ -56,6 +56,8 @@ import { useState } from "react";
 
   const [active, setActive] = useState("home");
   const [expanded, setExpanded] = useState(true);
+  const screenWidth =window.innerWidth
+
 
   return (
 <>
@@ -65,7 +67,6 @@ import { useState } from "react";
         onClick={() => setMenuToggle(false)}
       />
     )}
-
 
     {/* change line */}
     <aside
@@ -93,11 +94,12 @@ import { useState } from "react";
     className="cursor-pointer"
   >
     {expanded ? (
-      <PanelLeftOpen className="text-gray-600 h-6 w-6" />
+      <PanelLeftOpen className="hidden sm:flex text-gray-600 h-6 w-6" />
     ) : (
-      <PanelLeftClose className="text-white h-6 w-6" />
+      <PanelLeftClose className="hidden sm:flex text-white h-6 w-6" />
     )}
   </button>
+  {PanelLeftOpen ?  document.body.classList.remove("overflow-y-hidden") : document.body.classList.add("overflow-y-hidden")}
 
   {expanded && (
     <button
@@ -137,9 +139,14 @@ import { useState } from "react";
               }
             else{
               setCategory(link.btnName)
-            }}}
-              expanded={expanded}
+            }
+            if(screenWidth<720){
+              setMenuToggle(false)
+            }
+          }}
+            expanded={expanded}
             />
+            
           ))}
         </div>
 

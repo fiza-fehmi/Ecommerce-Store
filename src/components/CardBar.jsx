@@ -17,12 +17,14 @@ const CardBar = ({category}) => {
     <div className="relative transition duration-300 ease-in ">
       <div className="hidden sm:flex">
         <h1 className="uppercase text-black sm:font-bold font-medium text-lg sm:text-xl sm:py-3 sm:px-3">
-          All Products
+         
+          {category ==="all" ? " All Products" :category}
         </h1>
       </div>
       <div className="sm:hidden relative">
         <div className="flex items-center justify-between px-5 py-1 transition duration-200 ease-in">
           <FilterToggle
+          category={category}
             open={filterOpen}
             setOpen={(value) => {
               setFilterOpen(value);
