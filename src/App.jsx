@@ -9,6 +9,7 @@ const App = () => {
    const [menuToggle, setMenuToggle] = useState(false);
    const [cartItems, setCartItems] = useState([])
    const [category, setCategory] = useState("all");
+  
   return (
     <div className="overflow-x-hidden">
       <Navbar

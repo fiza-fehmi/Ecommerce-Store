@@ -16,10 +16,14 @@ const ProductDetailCard = ({
   colorBtn3,
   colorBtn4,
   product,
+  colorBtn1Name,
+   colorBtn2Name,
+  colorBtn3Name,
+ 
   setCartItems
 })  => {
-
-const [button, setButton] = useState("")
+const [activeColor, setActiveColor] = useState("Black")
+const [SelectedSize, setSelectedSize] = useState("M")
    let navigate =useNavigate()
  
 
@@ -32,7 +36,13 @@ const [button, setButton] = useState("")
     clicked:"text-[#2B2344] border border-[#2B2344] font-medium",
 }
 const addToCart= ()=>{
-  setCartItems ((prev)=>[...prev,product])
+  setCartItems ((prev)=>[...prev,
+    {
+    ...product,
+    selectedColor:activeColor,
+    SelectedSize:SelectedSize
+    }
+    ])
 
 }
   return (
@@ -62,21 +72,21 @@ const addToCart= ()=>{
           </div>
           <div className="flex gap-3">
             {colorBtn1 && (
-              <button
+              <button onClick={()=>setActiveColor(colorBtn1Name)}
                 aria-label="Color option 1"
-                className={colorBtn1}
+                className={`${colorBtn1} ${activeColor ===colorBtn1Name ?  "ring-slate-900 ring-2 ring-offset-2" : ""}`}
               ></button>
             )}
             {colorBtn2 && (
-              <button
+              <button onClick={()=>setActiveColor(colorBtn2Name)}
                 aria-label="Color option 2"
-                className={colorBtn2}
+                className={`${colorBtn2} ${activeColor ===colorBtn2Name ?  "ring-stone-300 ring-2 ring-offset-2" : ""}`}
               ></button>
             )}
             {colorBtn3 && (
-              <button
+              <button onClick={()=>setActiveColor(colorBtn3Name)}
                 aria-label="Color option 3"
-                className={colorBtn3}
+                className={`${colorBtn3} ${activeColor ===colorBtn3Name ?  " ring-indigo-200 ring-2 ring-offset-2" : ""}`}
               ></button>
             )}
             {colorBtn4 && (
@@ -92,19 +102,19 @@ const addToCart= ()=>{
             <h1 className="font-semibold text-[#1F2038]">Size:</h1>
           </div>
           <div className="flex flex-wrap sm:gap-3 gap-2">
-            <button onClick={()=>setButton("small")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="small" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setSelectedSize("S")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${SelectedSize==="S" ? btnClicked.clicked :btnClicked.normal }`}>
               S
             </button>
-            <button onClick={()=>setButton("medium")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="medium" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setSelectedSize("M")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${SelectedSize==="M" ? btnClicked.clicked :btnClicked.normal }`}>
               M
             </button>
-            <button onClick={()=>setButton("large")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="large" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setSelectedSize("L")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${SelectedSize==="L" ? btnClicked.clicked :btnClicked.normal }`}>
               L
             </button>
-            <button onClick={()=>setButton("Xlarge")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${button==="Xlarge" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setSelectedSize("XL")} className={`rounded-lg border px-3 py-1   sm:px-4 sm:py-2 ${SelectedSize==="XL" ? btnClicked.clicked :btnClicked.normal }`}>
               XL
             </button>
-            <button onClick={()=>setButton("XXlarge")} className={`rounded-lg border px-3 py-1  sm:px-4 sm:py-2 ${button==="XXlarge" ? btnClicked.clicked :btnClicked.normal }`}>
+            <button onClick={()=>setSelectedSize("XXL")} className={`rounded-lg border px-3 py-1  sm:px-4 sm:py-2 ${SelectedSize==="XXL" ? btnClicked.clicked :btnClicked.normal }`}>
               XXL
             </button>
           </div>

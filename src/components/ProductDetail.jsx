@@ -3,7 +3,9 @@ import { products } from "../data/products";
 import ProductDetailCard from "./ProductDetailCard";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+
 const ProductDetail = ({cartItems,setCartItems}) => {
+
     const navigate = useNavigate();
     const btnClick = () => {
     navigate(-1);
@@ -51,6 +53,10 @@ const ProductDetail = ({cartItems,setCartItems}) => {
         colorBtn1="h-6 w-6 rounded-full border border-gray-300 bg-slate-900"
         colorBtn2="h-6 w-6 rounded-full border border-gray-300 bg-stone-300"
         colorBtn3="h-6 w-6 rounded-full border border-gray-300 bg-indigo-200"
+        colorBtn1Name ="Black"
+        colorBtn2Name ="White"
+        colorBtn3Name ="Lavender"
+
       />
     </div>
     </>
