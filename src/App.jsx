@@ -9,7 +9,10 @@ const App = () => {
    const [menuToggle, setMenuToggle] = useState(false);
    const [cartItems, setCartItems] = useState([])
    const [category, setCategory] = useState("all");
-  
+  const total = cartItems.reduce((total ,item)=>{
+  const price =parseInt(item.price.replace("PKR ", "").replace(",",""));
+  return total + price * item.quantity
+} ,0)
   return (
     <div className="overflow-x-hidden">
       <Navbar
@@ -21,9 +24,9 @@ const App = () => {
              <Route path="/" element={ <HomePage category={category} setCategory={setCategory} />} />
         <Route path="/products/:productId" element={<ProductDetail  cartItems={cartItems} setCartItems={setCartItems}
          />} />
-        <Route path="/Cartpage" element={<Cartpage cartItems={cartItems} setCartItems={setCartItems} 
+        <Route path="/Cartpage" element={<Cartpage cartItems={cartItems} setCartItems={setCartItems} total={total}
          />} />
-        <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/Checkout" element={<Checkout total={total} cartItems={cartItems} />} />
       </Routes>
     </div>
   );

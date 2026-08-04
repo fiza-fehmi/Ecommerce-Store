@@ -7,16 +7,41 @@ import {
   Trash2,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-const Cartpage = ({ cartItems, setCartItems }) => {
+const Cartpage = ({ cartItems, setCartItems ,total}) => {
   const removeItem = (id) => {
     setCartItems((currentItem) => currentItem.filter((item) => item.id !== id));
   };
-  const [count, setCount] = useState(1)
+const increaseQuantity = (id) => {
+  setCartItems((prevItems) =>
+    prevItems.map((item) =>
+      item.id === id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    )
+  );
+};
+
+const decreaseQuantity = (id) => {
+  setCartItems((prevItems) =>
+    prevItems.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            quantity: item.quantity > 1
+              ? item.quantity - 1
+              : 1,
+          }
+        : item
+    )
+  );
+};
   const navigate = useNavigate();
   const btnClick = () => {
     navigate("/");
   };
+  const proceed =()=>{
+    navigate('/Checkout')
+  }
   if (cartItems.length === 0) {
     return (
       <section className="bg-[#FFFDF9] min-h-screen pt-4 pb-2 px-6">
@@ -86,158 +111,173 @@ const Cartpage = ({ cartItems, setCartItems }) => {
     );
   }
   return (
-   <div className="bg-[#FFFDF9] min-h-screen p-6">
-  <h1 className="text-2xl font-bold text-[#2B2344]">
-    Your Cart
-  </h1>
+    <div className="bg-[#FFFDF9] min-h-screen p-6">
+      <h1 className="text-2xl font-bold text-[#2B2344]">Your Cart</h1>
 
-  <div className="h-auto py-5 gap-4 flex flex-col px-4 w-full">
-    {cartItems.map((item) => (
-      <div
-        className="relative flex justify-between gap-5 p-3 bg-white rounded-2xl border border-[#EAEAEA] shadow-sm 
-        w-full sm:w-[60%]"
-        key={item.id}
-      >
-
-        <div className="flex flex-col sm:flex-row gap-4 w-full flex-wrap sm:flex-nowrap overflow-hidden">
-
-          {/* Image */}
-          <div className="h-36 w-full sm:h-32 overflow-hidden sm:w-32 shrink-0 rounded-lg flex justify-center items-center bg-[#F2EBFB]">
-            <img 
-              src={item.img}
-              alt={item.productName}
-              className="h-32 sm:h-24 object-contain"
-            />
-          </div>
-
-
-          {/* Product Info */}
-          <div className="flex flex-col gap-2 sm:gap-1 flex-1">
-
-            <h3 className="font-bold text-[#2B2344] text-lg sm:text-xl">
-              {item.productName}
-            </h3>
-
-            <span className=" sm:text-base font-medium">
-              {item.category}
-            </span>
-
-            <span className="text-lg text-[#6D4AFF] font-bold">
-              {item.price}
-            </span>
-
-
-            <div className="flex flex-wrap items-center gap-8 sm:gap-4">
-
-              <div className="flex items-center gap-2">
-                <span className="font-medium">
-                  Color:
-                </span>
-
-                <span className="text-sm bg-[#F2EBFB] px-2 py-1 rounded-lg border border-gray-300">
-                  {item.selectedColor}
-                </span>
-              </div>
-
-
-              <div className="flex items-center gap-2">
-                <span className="font-medium">
-                  Size:
-                </span>
-
-                <span className="text-sm bg-[#F2EBFB] px-2 py-1 rounded-lg border border-gray-300">
-                  {item.SelectedSize}
-                </span>
-              </div>
-
-            </div>
-
-
-            {/* Quantity Mobile */}
-            <div className="sm:hidden mt-2">
-              <div className="flex items-center justify-center gap-2 ">
-
-                
-
-                <div className="flex w-[50%] items-center w-28 rounded-lg border border-gray-200 overflow-hidden shadow-sm bg-white">
-
-                  <button
-                    onClick={()=>setCount(count > 1 ? count-1 : 1)}
-                    className="h-9 w-14 flex items-center justify-center text-xl font-semibold hover:bg-gray-100"
-                  >
-                    −
-                  </button>
-
-                  <div className="h-11 w-16 flex items-center justify-center text-white bg-[#6D4AFF] font-semibold">
-                    {count}
+      <div className="flex flex-col lg:flex-row gap-6 py-5">
+        {/* Left Side */}
+        <div className="w-full lg:w-[65%]">
+          <div className="flex flex-col gap-4">
+            {cartItems.map((item) => (
+              <div
+                className="relative flex justify-between gap-5 p-3 bg-white rounded-2xl border border-[#EAEAEA] shadow-sm w-full"
+                key={item.id}
+              >
+                <div className="flex flex-col sm:flex-row gap-4 w-full flex-wrap sm:flex-nowrap overflow-hidden">
+                  {/* Image */}
+                  <div className="h-36 w-full sm:h-32 overflow-hidden sm:w-32 shrink-0 rounded-lg flex justify-center items-center bg-[#F2EBFB]">
+                    <img
+                      src={item.img}
+                      alt={item.productName}
+                      className="h-36 sm:h-24 object-contain"
+                    />
                   </div>
 
-                  <button
-                    onClick={()=>setCount(count+1)}
-                    className="h-9 w-14 flex items-center justify-center text-xl font-semibold text-[#6D4AFF] hover:bg-[#F4F1FF]"
-                  >
-                    +
-                  </button>
+                  {/* Product Info */}
+                  <div className="flex flex-col gap-2 sm:gap-1 flex-1">
+                    <h3 className="font-bold text-[#2B2344] text-lg sm:text-xl">
+                      {item.productName}
+                    </h3>
 
+                    <span className=" sm:text-base font-medium">
+                      {item.category}
+                    </span>
+
+                    <span className="text-lg text-[#6D4AFF] font-bold">
+                      {item.price}
+                    </span>
+
+                    <div className="flex flex-wrap items-center gap-8 sm:gap-4">
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium">Color:</span>
+
+                        <span className="text-sm bg-[#F2EBFB] px-2 py-1 rounded-lg border border-gray-300">
+                          {item.selectedColor}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium">Size:</span>
+
+                        <span className="text-sm bg-[#F2EBFB] px-2 py-1 rounded-lg border border-gray-300">
+                          {item.SelectedSize}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Quantity Mobile */}
+                    <div className="sm:hidden mt-2">
+                      <div className="flex items-center justify-center gap-2 ">
+                        <div className="flex w-[50%] items-center w-28 rounded-lg border border-gray-200 overflow-hidden shadow-sm bg-white">
+                          <button
+                            onClick={()=>decreaseQuantity(item.id)}
+                            className="h-9 w-14 flex items-center justify-center text-xl font-semibold hover:bg-gray-100"
+                          >
+                            −
+                          </button>
+
+                          <div className="h-11 w-16 flex items-center justify-center text-white bg-[#6D4AFF] font-semibold">
+                            {item.quantity}
+                          </div>
+
+                          <button
+                            onClick={()=>increaseQuantity(item.id)}
+                            className="h-9 w-14 flex items-center justify-center text-xl font-semibold text-[#6D4AFF] hover:bg-[#F4F1FF]"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quantity Desktop (same place) */}
+                  <div className="hidden sm:flex items-center justify-center flex-1">
+                    <div className="flex flex-col items-center justify-center gap-2 mt-8">
+                      <h2 className="text-base font-medium text-gray-600">
+                        Quantity
+                      </h2>
+
+                      <div className="flex items-center w-fit rounded-lg border border-gray-200 overflow-hidden shadow-sm bg-white">
+                        <button
+                          onClick={()=>decreaseQuantity(item.id)}
+                          className="h-10 w-10 flex items-center justify-center text-xl font-semibold text-gray-600 hover:bg-gray-100"
+                        >
+                          −
+                        </button>
+                        <div className="h-10 w-12 flex items-center justify-center text-white text-xl font-semibold bg-[#6D4AFF]">
+                          {item.quantity}
+                        </div>
+
+                        <button
+                          onClick={()=>increaseQuantity(item.id)}
+                          className="h-10 w-10 flex items-center justify-center text-xl font-semibold text-[#6D4AFF] hover:bg-[#F4F1FF]"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-              </div>
-            </div>
-
-          </div>
-
-
-
-          {/* Quantity Desktop (same place) */}
-          <div className="hidden sm:flex items-center justify-center flex-1">
-            <div className="flex flex-col items-center justify-center gap-2 mt-8">
-
-              <h2 className="text-base font-medium text-gray-600">
-                Quantity 
-              </h2>
-
-              <div className="flex items-center w-fit rounded-lg border border-gray-200 overflow-hidden shadow-sm bg-white">
-
-                <button
-                  onClick={()=>setCount(count > 1 ? count-1 : 1)}
-                  className="h-10 w-10 flex items-center justify-center text-xl font-semibold text-gray-600 hover:bg-gray-100"
+                {/* Delete */}
+                <div
+                  onClick={() => removeItem(item.id)}
+                  className="absolute top-3 right-3 h-10 w-10 cursor-pointer flex items-center justify-center rounded-lg bg-[#6D4AFF]"
                 >
-                  −
-                </button>
-
-                <div className="h-10 w-12 flex items-center justify-center text-white text-xl font-semibold bg-[#6D4AFF]">
-                  {count}
+                  <Trash2 className="text-white h-5 w-5" />
                 </div>
-
-                <button
-                  onClick={()=>setCount(count+1)}
-                  className="h-10 w-10 flex items-center justify-center text-xl font-semibold text-[#6D4AFF] hover:bg-[#F4F1FF]"
-                >
-                  +
-                </button>
-
               </div>
-
-            </div>
+            ))}
           </div>
-
-
         </div>
 
+        <div className="w-full lg:w-[35%]">
+          <div className="sticky top-6 bg-white rounded-2xl border border-[#EAEAEA] shadow-sm p-6">
+            <h2 className="text-2xl font-bold text-[#2B2344] pb-3">
+              Order Summary
+            </h2>
 
-        {/* Delete */}
-        <div
-          onClick={() => removeItem(item.id)}
-          className="absolute top-3 right-3 h-10 w-10 cursor-pointer flex items-center justify-center rounded-lg bg-[#6D4AFF]"
-        >
-          <Trash2 className="text-white h-5 w-5" />
+            {cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex justify-between items-center  "
+              >
+                <span className="text-gray-600">
+                  {item.productName}
+
+                  <span className="font-medium text-[#6D4AFF] ml-1">
+                    x{item.quantity}
+                  </span>
+                </span>
+
+                <span className="font-semibold text-[#2B2344]">
+                  {item.price}
+                </span>
+              </div>
+            ))}
+
+            <div className="flex justify-between mt-4">
+              <span className="text-gray-600">Shipping</span>
+
+              <span className="font-semibold text-[#2B2344]">Free</span>
+            </div>
+
+            <div className="border-t my-5"></div>
+
+            <div className="flex justify-between text-xl font-bold text-[#2B2344]">
+              <span>Total</span>
+
+              <span>PKR {total.toLocaleString()}</span>
+            </div>
+
+            <button onClick={proceed} className="mt-6 w-full h-12 cursor-pointer transition duration-200 ease-in rounded-xl bg-[#6D4AFF] hover:bg-[#5A3EF0] text-white font-semibold">
+              Proceed to Checkout
+            </button>
+          </div>
         </div>
-
-
       </div>
-    ))}
-  </div>
-</div>
+    </div>
   );
 };
 

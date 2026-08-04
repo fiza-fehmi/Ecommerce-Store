@@ -21,16 +21,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CheckoutMobile from "./CheckoutMobile";
 
-const Checkout = () => {
+const Checkout = ({total,cartItems}) => {
   const [Delivery, setDelivery] = useState("standard");
   const [Payment, setPayment] = useState("credit")
+  const [showPopup, setShowPopup] = useState(false);
 const navigate =useNavigate()
 const backHome= ()=>{
     navigate('/')
 }
   return (
     <>
-  <CheckoutMobile />
+  <CheckoutMobile   total={total} cartItems={cartItems}  />
 <div className="flex flex-col w-full justify-center items-center p-5 sm:flex hidden">
         <h1 className="text-3xl font-bold text-[#2B2344]">Checkout</h1>
         <p className="text-gray-500 font-medium text-sm">
@@ -41,7 +42,7 @@ const backHome= ()=>{
       
       <div className="flex gap-5">
 
-      <div className=" bg-[#FFFDF9] border rounded-lg border-[#EAEAEA] shadow-sm px-5 py-4 w-[60%] flex flex-col gap-6">
+      <div className=" bg-[#FFFDF9] border rounded-lg border-[#EAEAEA] shadow-sm px-5 py-4 w-[60%] flex flex-col gap-6 pb-4">
         <div>
           <div className="flex items-center gap-4 ">
             <div className="h-8 w-8 flex justify-center items-center bg-[#F1ECFF] rounded-full">
@@ -255,16 +256,20 @@ const backHome= ()=>{
                 </div>
            
               </div>
-              <div className="cursor-pointer mt-6"> 
-              <button className="w-full h-10 hover:bg-[#5A38EA] transition duration-200 ease-in flex justify-center cursor-pointer items-center gap-2 rounded-lg text-white text-lg font-medium bg-[#6D4AFF]"><LockKeyhole className="h-5 w-5" />Place order</button>
+              {cartItems.length === 0 && (
+<div className="cursor-pointer mt-6"> 
+              <button className="w-full h-10 active:scale-95 hover:bg-[#5A38EA] transition duration-200 ease-in flex justify-center cursor-pointer items-center gap-2 rounded-lg text-white text-lg font-medium bg-[#6D4AFF]"><LockKeyhole className="h-5 w-5" />Place order</button>
               </div>
+              )}
+              
             </div>
           </div>
         </div>
       </div>
       <div className="bg-[#FFFDF9] px-4 border rounded-lg border-[#EAEAEA] shadow-sm w-[40%]">
         <h1 className="flex py-4  items-center gap-2 font-medium text-lg"><Lock className="text-[#6D4AFF]" />Order Summary</h1>
-        <div className="w-full pb-5 flex flex-col items-center mt-4 border-b border-gray-500/40">
+        {cartItems.length === 0 &&(
+          <div className="w-full pb-5 flex flex-col items-center mt-4 border-b border-gray-500/40">
            <div className="h-24 w-24 flex  justify-center items-center rounded-full bg-[#F1ECFF]">
             <ShoppingBag className="h-12 w-12 text-[#6D4AFF]" />
            </div>
@@ -275,10 +280,14 @@ const backHome= ()=>{
           </button>
           
         </div>
+
+        )
+        }
+        
         <div className="py-3 flex flex-col border-b border-gray-500/40">
             <div className="flex justify-between font-medium text-[#2B2344]">
                 <p>Subtotal</p>
-                <p>PKR 0</p>
+                <p>PKR {total.toLocaleString()}</p>
             </div>
             <div className="flex justify-between font-medium text-[#2B2344]">
                 <p>Shipping</p>
@@ -295,7 +304,7 @@ const backHome= ()=>{
         </div>
         <div className="flex justify-between text-[#2B2344] pt-2">
             <h1 className="font-bold text-xl">Total</h1>
-            <p className="font-medium">PKR 0.0</p>
+            <p className="font-medium">PKR {total.toLocaleString()}</p>
         </div>
         <div className="flex items-center justify-between bg-[#FFFDF9] border rounded-lg border-[#EAEAEA] shadow-sm h-20 px-4 mt-3">
             <div className="flex items-center">
@@ -316,9 +325,35 @@ const backHome= ()=>{
                 <p className="text-sm font-medium">Easy Returns</p>
                 </div>
             </div>
-          
+             
           
         </div>
+        {showPopup && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+    <div className="bg-white p-6 rounded-2xl shadow-lg text-center">
+      <h2 className="text-xl font-bold text-[#2B2344]">
+        Order Placed Successfully 🎉
+      </h2>
+
+      <p className="text-gray-600 mt-2">
+        Your order has been placed.
+      </p>
+
+      <button
+        onClick={() => setShowPopup(false)}
+        className="mt-4 bg-[#6D4AFF] text-white px-5 py-2 rounded-lg"
+      >
+        OK
+      </button>
+    </div>
+  </div>
+)}
+         {cartItems.length >0 && (
+<div className="cursor-pointer mt-6"> 
+              <button  onClick={() => setShowPopup(true)} className="w-full h-10 active:scale-95 hover:bg-[#5A38EA] transition duration-200 ease-in flex justify-center cursor-pointer items-center gap-2 rounded-lg text-white text-lg font-medium bg-[#6D4AFF]"><LockKeyhole className="h-5 w-5" />Place order</button>
+              </div>
+              )}
+          
 
       </div>
       </div>

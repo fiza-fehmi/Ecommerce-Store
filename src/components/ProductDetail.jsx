@@ -56,6 +56,7 @@ const ProductDetail = ({cartItems,setCartItems}) => {
         colorBtn1Name ="Black"
         colorBtn2Name ="White"
         colorBtn3Name ="Lavender"
+        
 
       />
     </div>

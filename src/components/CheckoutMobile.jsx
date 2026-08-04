@@ -6,13 +6,15 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-const CheckoutMobile = () => {
+const CheckoutMobile = ({total ,cartItems}) => {
   const navigate = useNavigate();
     const btnClick = () => {
     navigate(-1);
   };
   const [delivery, setDelivery] = useState("standard")
   const [payment, setPayment] = useState("credit")
+  const [showPopup, setShowPopup] = useState(false);
+
 
   return (
     <div className="min-h-screen bg-[#F7F5FF] sm:hidden">
@@ -57,10 +59,12 @@ const CheckoutMobile = () => {
                 <h2 className="font-semibold text-[#2B2344]">
                   Order Summary
                 </h2>
-
-                <p className="text-xs text-gray-500">
+{cartItems.length === 0 && (
+<p className="text-xs text-gray-500">
                   0 Items
                 </p>
+)}
+                
 
               </div>
 
@@ -94,7 +98,7 @@ const CheckoutMobile = () => {
               </span>
 
               <span className="font-bold text-xl text-[#6D4AFF]">
-                $0.00
+                PKR {total.toLocaleString()}
               </span>
 
             </div>
@@ -278,7 +282,26 @@ const CheckoutMobile = () => {
 </div>
 
 {/* Payment */}
+        {showPopup && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+    <div className="bg-white p-6 rounded-2xl shadow-lg text-center">
+      <h2 className="text-xl font-bold text-[#2B2344]">
+        Order Placed Successfully 🎉
+      </h2>
 
+      <p className="text-gray-600 mt-2">
+        Your order has been placed.
+      </p>
+
+      <button
+        onClick={() => setShowPopup(false)}
+        className="mt-4 bg-[#6D4AFF] text-white px-5 py-2 rounded-lg"
+      >
+        OK
+      </button>
+    </div>
+  </div>
+)}
 <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
 
   <h2 className="text-[#2B2344] text-base font-semibold mb-5">
@@ -305,7 +328,7 @@ const CheckoutMobile = () => {
 
 {/* Place Order */}
 
-<button className="w-full bg-[#6D4AFF] hover:bg-[#5A38EA] text-white font-semibold py-4 rounded-xl transition duration-200 active:scale-95">
+<button onClick={() => setShowPopup(true)} className="w-full bg-[#6D4AFF] hover:bg-[#5A38EA] text-white font-semibold py-4 rounded-xl transition duration-200 active:scale-95">
   Place Order
 </button>
 

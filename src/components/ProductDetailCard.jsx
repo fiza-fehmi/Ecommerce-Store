@@ -19,8 +19,8 @@ const ProductDetailCard = ({
   colorBtn1Name,
    colorBtn2Name,
   colorBtn3Name,
- 
-  setCartItems
+  setCartItems,
+  cartItems
 })  => {
 const [activeColor, setActiveColor] = useState("Black")
 const [SelectedSize, setSelectedSize] = useState("M")
@@ -35,16 +35,36 @@ const [SelectedSize, setSelectedSize] = useState("M")
     normal :"border-gray-200",
     clicked:"text-[#2B2344] border border-[#2B2344] font-medium",
 }
-const addToCart= ()=>{
-  setCartItems ((prev)=>[...prev,
-    {
-    ...product,
-    selectedColor:activeColor,
-    SelectedSize:SelectedSize
-    }
-    ])
+const addToCart = () => {
+  const existingItem = cartItems.find(
+    (item) =>
+      item.id === product.id &&
+      item.selectedColor === activeColor &&
+      item.SelectedSize === SelectedSize
+  );
 
-}
+  if (existingItem) {
+    setCartItems(
+      cartItems.map((item) =>
+        item.id === product.id &&
+        item.selectedColor === activeColor &&
+        item.SelectedSize === SelectedSize
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  } else {
+    setCartItems([
+      ...cartItems,
+      {
+        ...product,
+        selectedColor: activeColor,
+        SelectedSize: SelectedSize,
+        quantity: 1,
+      },
+    ]);
+  }
+};
   return (
     <div className="grid gap-5 sm:gap-10 rounded-2xl bg-white p-6 shadow-[0_8px_30px_rgba(31,32,56,0.08)] md:grid-cols-2">
       <div className="flex min-h-[320px] items-center justify-center rounded-2xl bg-[#F2EBFB] sm:p-6">
