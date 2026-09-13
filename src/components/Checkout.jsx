@@ -350,7 +350,7 @@ const backHome= ()=>{
 )}
          {cartItems.length >0 && (
 <div className="cursor-pointer mt-6"> 
-              <button  onClick={() => setShowPopup(true)} className="w-full h-10 active:scale-95 hover:bg-[#5A38EA] transition duration-200 ease-in flex justify-center cursor-pointer items-center gap-2 rounded-lg text-white text-lg font-medium bg-[#6D4AFF]"><LockKeyhole className="h-5 w-5" />Place order</button>
+              <button  onClick={() => setShowPopup(true) } className="w-full h-10 active:scale-95 hover:bg-[#5A38EA] transition duration-200 ease-in flex justify-center cursor-pointer items-center gap-2 rounded-lg text-white text-lg font-medium bg-[#6D4AFF]"><LockKeyhole className="h-5 w-5" />Place order</button>
               </div>
               )}
           
