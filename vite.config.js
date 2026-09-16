@@ -10,5 +10,8 @@ export default defineConfig({
     tailwindcss(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-  base: "/Ecommerce-Store/",
+  // Use environment variable to determine base path
+  // GitHub Pages: /Ecommerce-Store/
+  // Vercel (and other platforms): /
+  base: process.env.VITE_BASE_PATH || '/',
 })
